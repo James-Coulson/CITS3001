@@ -1,17 +1,18 @@
+# External imports
 import networkx as nx
 import matplotlib.pyplot as plt
 import random as rd
 
+# Local imports
+from src.constants import *
 
-
-
-def setup_graph(num_nodes: int, prob: float, seed=None) -> nx.Graph:
+def setup_graph(num_nodes: int, prob: float = 0.1, new_edges: int = 3, weights: list = [0.9, 0.05, 0.03, 0.02], type_: int = ERDOS_RENYI, seed: int = None) -> nx.Graph:
 	# Generating Erdos Renyi Graph
-	G = nx.erdos_renyi_graph(num_nodes, prob, seed)
+	if type_ == ERDOS_RENYI: G = nx.erdos_renyi_graph(num_nodes, prob, seed)
+	elif type_ == BARABASI_ALBERT: G = nx.barabasi_albert_graph(num_nodes, new_edges, seed)
 	
 	# Defining team probabilites
-	weights = [0.4, 0.3, 0.3]
-	weights = [0, weights[0], 1 - weights[2]]	# Green, red, blue
+	weights = [0, weights[0], 1 - weights[3] - weights[2], 1 - weights[3]]	# Green, red, blue, gray
 
 	# Generating array for green, red, and blue nodes
 	attrs = dict()
@@ -21,11 +22,12 @@ def setup_graph(num_nodes: int, prob: float, seed=None) -> nx.Graph:
 			attrs[i] = {'team': 'green'}
 		elif rand < weights[2]:
 			attrs[i] = {'team': 'red'}
-		else:
+		elif rand < weights[3]:
 			attrs[i] = {'team': 'blue'}
-	
-	print(attrs)
+		else:
+			attrs[i] = {'team': 'gray'}
 
+	# Setting node attributes
 	nx.set_node_attributes(G, attrs)
 	
 	# Return graph
@@ -52,5 +54,5 @@ def plot_graph(G: nx.Graph, block: bool = True):
 	# Blocking
 	if block: plt.show()
 
-G = setup_graph(30, 0.2)
+G = setup_graph(100, new_edges = 4, type_ = BARABASI_ALBERT)
 plot_graph(G)
