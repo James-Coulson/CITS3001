@@ -14,7 +14,7 @@ def setup_graph(num_nodes: int, prob: float = 0.1, new_edges: int = 3, weights: 
 	# Defining team probabilites
 	weights = [0, weights[0], 1 - weights[3] - weights[2], 1 - weights[3]]	# Green, red, blue, gray
 
-	# Generating array for green, red, and blue nodes
+	# Generating attributes for green, red, blue, and gray nodes
 	attrs = dict()
 	for i in range(num_nodes):
 		rand = rd.uniform(0, 1)
@@ -27,9 +27,20 @@ def setup_graph(num_nodes: int, prob: float = 0.1, new_edges: int = 3, weights: 
 		else:
 			attrs[i] = {'team': 'gray'}
 
+	# Generating uncertainty level
+	for i in range(num_nodes):
+		attrs[i]['uncertainty'] = rd.uniform(0, 1)
+
+	# Generating opinion level
+	# -- We are assuming that the opinion sways from Red (0) and Blue (1)
+	for i in range(num_nodes):
+		attrs[i]['opinion'] = rd.uniform(0, 1)
+
 	# Setting node attributes
 	nx.set_node_attributes(G, attrs)
 	
+	print(attrs)
+
 	# Return graph
 	return G
 
@@ -54,5 +65,5 @@ def plot_graph(G: nx.Graph, block: bool = True):
 	# Blocking
 	if block: plt.show()
 
-G = setup_graph(100, new_edges = 4, type_ = BARABASI_ALBERT)
+G = setup_graph(10, new_edges = 4, type_ = BARABASI_ALBERT)
 plot_graph(G)
