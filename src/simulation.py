@@ -1,12 +1,17 @@
 #
+#	Methods used to perform a simulation on a given graph
 #
-#
+
+# ----- Imports ----- #
+
+# Expernal imports
 import random as rd
 import networkx as nx
 
-import matplotlib.pyplot as plt
-
+# Local imports
 from .constants import *
+
+# ----- Simulation Methods ----- #
 
 def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0.5, 0.5]):
 	# Defining theta min
@@ -14,10 +19,6 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 	
 	# Obtaining weights of the graph
 	weights = nx.get_edge_attributes(G, 'weight')
-
-	Y1 = list()
-	Y2 = list()
-	X = list()
 
 	# Perform simulation
 	for t in range(max_time):
@@ -43,13 +44,12 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 		# Uncertainties of the nodes
 		uncertainty = nx.get_node_attributes(G, "uncertainty")
 
-		# TODO PLACEHOLDER UNMAX, UNMIN
+		# PLACEHOLDER UNMAX, UNMIN
 		unmax = 0.4
 		unmin = -0.4
 
 		# Will vote attributes
 		willvote = nx.get_node_attributes(G, 'willvote')
-
 
 		# Changes whether each node will vote or not
 		for n in list(willvote.keys()):
