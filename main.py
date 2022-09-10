@@ -13,13 +13,18 @@ num_green = 100
 
 # For Erdos-Renyi graph generation
 type_ = ERDOS_RENYI
-prob = 0.2
+prob = 0.02
+
+# Defining uncertainty interval
+uncertainty_int = [-0.4, 0.4]
 
 # Generate graph
-G = generate_graph(5, prob = prob, type_ = BARABASI_ALBERT)
+G = generate_graph(100, prob = prob, uncertainty_int = uncertainty_int, type_ = BARABASI_ALBERT)
+
+plot_graph(G, colortype = MAP_UNCERTAINTY)
 
 # Runs simulation
-run_simulation(G, max_time=5)
+run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_UNCERTAINTY)
 
 # Plot graph
 plot_graph(G)

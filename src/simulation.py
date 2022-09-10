@@ -30,7 +30,7 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 	
 	# Defining theta min
 	theta_min = uncertainty_int[0]
-	
+
 	# Obtaining weights of the graph
 	weights = nx.get_edge_attributes(G, 'weight')
 
