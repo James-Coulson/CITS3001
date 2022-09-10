@@ -10,10 +10,23 @@ import networkx as nx
 
 # Local imports
 from .constants import *
+from .plotting.graph_plotting import plot_graph
 
 # ----- Simulation Methods ----- #
 
-def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0.5, 0.5]):
+def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None):
+	"""
+	Runs the simulation on a given graph
+
+	Parameters:
+		G: The given graph
+		max_time: The maximum number of interations of the simulation (default: 100)
+		uncertainty_int: The uncertainty interval (default [-0.5, 0.5])
+		plot_frequency: The frequency of the plot redrawing, if set to None a graph will not be plotted (default: None)
+	"""
+	# Defining pos
+	pos = nx.spring_layout(G)
+	
 	# Defining theta min
 	theta_min = uncertainty_int[0]
 	
@@ -60,5 +73,9 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 		
 		# Sets the new willvote attributes
 		nx.set_node_attributes(G, willvote, "willvote")
-					
+
+		# Call plot_graph
+		if plot_frequency is not None and t % plot_frequency == 0:
+			plot_graph(G, pos=pos, block=False)
+
 	return G

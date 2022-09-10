@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 # ----- Graph PLotting Methods ----- #
 
-def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block: bool = True):
+def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block: bool = True, pos = None):
 	"""
 	Function used to render a graph
 
@@ -19,12 +19,13 @@ def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block:
 		G: Graph object to be drawn
 		layout_function: A callable to be used to determine the layout of the nodes in the graph (default: nx.spring_layout) 
 		block: Whether the process should block after rendering the graph (default: True)
+		pos: The position of the nodes in the graph (default: None)
 	"""
 	# Get color_map
 	color_map = list(nx.get_node_attributes(G, 'team').values())
 	
 	# Defining pos
-	pos = layout_function(G)
+	if pos is None: pos = layout_function(G)
 
 	# Drawing graph
 	nx.draw_networkx_nodes(G, pos, nodelist=G.nodes(), node_color=color_map)
@@ -32,6 +33,10 @@ def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block:
 	weights = nx.get_edge_attributes(G, 'weight')
 	nx.draw_networkx_edges(G, pos, edgelist = weights.keys(), width = list(weights.values()))
 
-
 	# Blocking
-	if block: plt.show()
+	if block: 
+		plt.show()
+	else:
+		plt.draw()
+		plt.pause(0.05)
+		plt.clf()
