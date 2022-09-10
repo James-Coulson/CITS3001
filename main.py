@@ -16,12 +16,10 @@ type_ = ERDOS_RENYI
 prob = 0.2
 
 # Generate graph
-G = generate_graph(20, prob = prob, type_ = BARABASI_ALBERT)
+G = generate_graph(5, prob = prob, type_ = BARABASI_ALBERT)
 
 # Runs simulation
-run_simulation(G)
+run_simulation(G, max_time=5)
 
 # Plot graph
 plot_graph(G)
-
-run_simulation(G, max_time=20)

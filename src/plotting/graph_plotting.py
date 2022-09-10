@@ -8,7 +8,6 @@
 from typing import Callable
 import networkx as nx
 import matplotlib.pyplot as plt
-import mplcursors as curs
 
 # ----- Graph PLotting Methods ----- #
 
