@@ -14,7 +14,7 @@ from .constants import *
 
 # ----- Graph Generation Methods ----- #
 
-def generate_graph(num_nodes: int, prob: float = 0.1, new_edges: int = 3, probs_team: list = [0.9, 0.05, 0.03, 0.02], type_: int = ERDOS_RENYI, seed: int = None) -> nx.Graph:
+def generate_graph(num_nodes: int, prob: float = 0.1, prob_vote: float = 0.5, uncertainty_int: list = [-0.5, 0.5], new_edges: int = 3, type_: int = ERDOS_RENYI, seed: int = None) -> nx.Graph:
 	"""
 	Setups up the initial graph to be used in the simulation
 
@@ -22,17 +22,15 @@ def generate_graph(num_nodes: int, prob: float = 0.1, new_edges: int = 3, probs_
 		num_nodes: The number of nodes in the graph
 		prob: The probability of connection, when using Erdos-Renyi to generate the graph (default: 0.1)
 		new_edges: The number of new edges to be attached at each step of the Barabasi-Albert PA Algorithm (default: 3)
-		probs_team: The probability of a node being in a specific team in order Green, Red, Blue, and Gray (default: [0.9, 0.05, 0.03, 0.02])
+		prob_vote: Probability that a node has the opinion vote (default: 0.5)
+		uncertainty_int: The uncertainty interval (default: [-0.5, 0.5])
 		type_: The type of algoithm to be used to generate the graph, see Graph Generation Types in src/constants.py (default: ERDOS_RENYI)
-		seed: A seed variabnle to be used for random processed (default, None)
+		seed: A seed variable to be used for random processed (default, None)
 	"""
 	# ----- Initial Setup ----- #
 
 	# Setting random seed
 	rd.seed(seed)
-
-	# Defining team probabilites
-	probs_team = [0, probs_team[0], 1 - probs_team[3] - probs_team[2], 1 - probs_team[3]]	# Green, red, blue, gray
 
 	# ----- Generating Graph Topology ----- #
 
@@ -47,19 +45,11 @@ def generate_graph(num_nodes: int, prob: float = 0.1, new_edges: int = 3, probs_
 
 	# Generating attributes for green, red, blue, and gray nodes
 	for i in range(num_nodes):
-		rand = rd.uniform(0, 1)
-		if rand < probs_team[1]:
-			node_attrs[i] = {'team': 'green'}
-		elif rand < probs_team[2]:
-			node_attrs[i] = {'team': 'red'}
-		elif rand < probs_team[3]:
-			node_attrs[i] = {'team': 'blue'}
-		else:
-			node_attrs[i] = {'team': 'gray'}
+		node_attrs[i] = {'team': 'green'}
 
 	# Generating uncertainty level
 	for i in range(num_nodes):
-		node_attrs[i]['uncertainty'] = rd.uniform(0, 1)
+		node_attrs[i]['uncertainty'] = rd.uniform(uncertainty_int[0], uncertainty_int[1])
 
 	# Generating opinion level
 	# -- We are assuming that the opinion sways from Red (0) and Blue (1)
@@ -68,7 +58,7 @@ def generate_graph(num_nodes: int, prob: float = 0.1, new_edges: int = 3, probs_
 	#  - If a node is already assigned to a team the distribution should be skewed so 
 	#    that they are more likely to share the opinion of their team
 	for i in range(num_nodes):
-		node_attrs[i]['opinion'] = rd.uniform(0, 1)
+		node_attrs[i]['opinion'] = True if rd.uniform(0, 1) > prob_vote else False
 
 	# Setting node attributes
 	nx.set_node_attributes(G, node_attrs)
