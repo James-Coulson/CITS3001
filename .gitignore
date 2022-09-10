@@ -1,2 +1,5 @@
 src/__pycache__/
 src/plotting/__pycache__/
+
+# Mac
+.DS_Store
