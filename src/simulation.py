@@ -44,9 +44,8 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 		# Uncertainties of the nodes
 		uncertainty = nx.get_node_attributes(G, "uncertainty")
 
-		# PLACEHOLDER UNMAX, UNMIN
-		unmax = 0.4
-		unmin = -0.4
+		# Defining uncertainty interval width
+		uncert_width = uncertainty_int[1] - uncertainty_int[0]
 
 		# Will vote attributes
 		willvote = nx.get_node_attributes(G, 'willvote')
@@ -55,8 +54,8 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 		for n in list(willvote.keys()):
 			# If the uncertainty is above zero, may change
 			if uncertainty[n] > 0:
-				change = uncertainty[n] / (unmax - unmin)
-				if change > rd.uniform(unmax, unmin):
+				change = uncertainty[n] / (uncert_width)
+				if change > rd.uniform(uncertainty_int[0], uncertainty_int[1]):
 					willvote[n] = not willvote[n]
 		
 		# Sets the new willvote attributes
