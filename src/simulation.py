@@ -14,7 +14,7 @@ from .plotting.graph_plotting import plot_graph
 
 # ----- Simulation Methods ----- #
 
-def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None):
+def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, colortype = MAP_TEAMS):
 	"""
 	Runs the simulation on a given graph
 
@@ -23,6 +23,7 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 		max_time: The maximum number of interations of the simulation (default: 100)
 		uncertainty_int: The uncertainty interval (default [-0.5, 0.5])
 		plot_frequency: The frequency of the plot redrawing, if set to None a graph will not be plotted (default: None)
+		colortype: The type of color mapping used for a plot (default: MAP_TEAMS))
 	"""
 	# Defining pos
 	pos = nx.spring_layout(G)
@@ -76,6 +77,6 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 
 		# Call plot_graph
 		if plot_frequency is not None and t % plot_frequency == 0:
-			plot_graph(G, pos=pos, block=False)
+			plot_graph(G, pos=pos, block=False, colortype = colortype)
 
 	return G
