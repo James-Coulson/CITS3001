@@ -4,8 +4,6 @@
 import random as rd
 import networkx as nx
 
-import matplotlib.pyplot as plt
-
 from .constants import *
 
 def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0.5, 0.5]):
@@ -49,7 +47,6 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 
 		# Will vote attributes
 		willvote = nx.get_node_attributes(G, 'willvote')
-
 
 		# Changes whether each node will vote or not
 		for n in list(willvote.keys()):
