@@ -16,7 +16,8 @@ from ..constants import *
 
 # ----- Graph PLotting Methods ----- #
 
-def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block: bool = True, colortype: int = MAP_TEAMS):
+def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block: bool = True, pos = None, colortype: int = MAP_TEAMS):
+
 	"""
 	Function used to render a graph
 
@@ -25,6 +26,7 @@ def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block:
 		layout_function: A callable to be used to determine the layout of the nodes in the graph (default: nx.spring_layout) 
 		block: Whether the process should block after rendering the graph (default: True)
 		colortype: Determines how the colors of the graph represent the node attributes (default: MAP_TEAMS)
+		pos: The position of the nodes in the graph (default: None)
 	"""
 	# Color mapping depending on option
 	if colortype == MAP_TEAMS:	# Mapping according to team values
@@ -51,7 +53,7 @@ def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block:
 	
 	
 	# Defining pos
-	pos = layout_function(G)
+	if pos is None: pos = layout_function(G)
 
 	# Drawing graph
 	nx.draw_networkx_nodes(G, pos, nodelist=G.nodes(), node_color=color_map)
@@ -59,6 +61,10 @@ def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block:
 	weights = nx.get_edge_attributes(G, 'weight')
 	nx.draw_networkx_edges(G, pos, edgelist = weights.keys(), width = list(weights.values()))
 
-
 	# Blocking
-	if block: plt.show()
+	if block: 
+		plt.show()
+	else:
+		plt.draw()
+		plt.pause(0.05)
+		plt.clf()

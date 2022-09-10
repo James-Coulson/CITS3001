@@ -51,12 +51,7 @@ def generate_graph(num_nodes: int, prob: float = 0.1, prob_vote: float = 0.5, un
 	for i in range(num_nodes):
 		node_attrs[i]['uncertainty'] = rd.uniform(uncertainty_int[0], uncertainty_int[1])
 
-	# Generating opinion level
-	# -- We are assuming that the opinion sways from Red (0) and Blue (1)
-	# 
-	# To look at:
-	#  - If a node is already assigned to a team the distribution should be skewed so 
-	#    that they are more likely to share the opinion of their team
+	# Generating opinion
 	for i in range(num_nodes):
 		node_attrs[i]['willvote'] = True if rd.uniform(0, 1) > prob_vote else False
 
