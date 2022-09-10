@@ -11,15 +11,19 @@ from src.simulation import run_simulation
 # Defining paramters
 num_green = 100
 
-# For Erdos-Renyi graph generation
-type_ = ERDOS_RENYI
+# # For Erdos-Renyi graph generation
+# type_ = ERDOS_RENYI
 prob = 0.02
+
+# For Barabasi-Albert graph generation
+type_ = BARABASI_ALBERT
+new_edges = 4
 
 # Defining uncertainty interval
 uncertainty_int = [-0.4, 0.4]
 
 # Generate graph
-G = generate_graph(100, prob = prob, uncertainty_int = uncertainty_int, type_ = BARABASI_ALBERT)
+G = generate_graph(100, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
 
 # Plot initial graph
 plot_graph(G, colortype = MAP_UNCERTAINTY)
