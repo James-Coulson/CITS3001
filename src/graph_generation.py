@@ -58,7 +58,7 @@ def generate_graph(num_nodes: int, prob: float = 0.1, prob_vote: float = 0.5, un
 	#  - If a node is already assigned to a team the distribution should be skewed so 
 	#    that they are more likely to share the opinion of their team
 	for i in range(num_nodes):
-		node_attrs[i]['opinion'] = True if rd.uniform(0, 1) > prob_vote else False
+		node_attrs[i]['willvote'] = True if rd.uniform(0, 1) > prob_vote else False
 
 	# Setting node attributes
 	nx.set_node_attributes(G, node_attrs)

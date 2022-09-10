@@ -8,6 +8,7 @@
 from typing import Callable
 import networkx as nx
 import matplotlib.pyplot as plt
+import mplcursors as curs
 
 # ----- Graph PLotting Methods ----- #
 
@@ -31,6 +32,7 @@ def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block:
 
 	weights = nx.get_edge_attributes(G, 'weight')
 	nx.draw_networkx_edges(G, pos, edgelist = weights.keys(), width = list(weights.values()))
+
 
 	# Blocking
 	if block: plt.show()
