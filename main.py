@@ -18,6 +18,9 @@ prob = 0.2
 # Generate graph
 G = generate_graph(20, prob = prob, type_ = BARABASI_ALBERT)
 
+# Runs simulation
+run_simulation(G)
+
 # Plot graph
 plot_graph(G)
 

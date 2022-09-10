@@ -53,7 +53,7 @@ def generate_graph(num_nodes: int, prob: float = 0.1, prob_vote: float = 0.5, un
 
 	# Generating opinion
 	for i in range(num_nodes):
-		node_attrs[i]['opinion'] = True if rd.uniform(0, 1) > prob_vote else False
+		node_attrs[i]['willvote'] = True if rd.uniform(0, 1) > prob_vote else False
 
 	# Setting node attributes
 	nx.set_node_attributes(G, node_attrs)
