@@ -17,7 +17,6 @@ from ..constants import *
 # ----- Graph PLotting Methods ----- #
 
 def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block: bool = True, pos = None, colortype: int = MAP_TEAMS):
-
 	"""
 	Function used to render a graph
 

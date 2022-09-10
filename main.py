@@ -21,10 +21,11 @@ uncertainty_int = [-0.4, 0.4]
 # Generate graph
 G = generate_graph(100, prob = prob, uncertainty_int = uncertainty_int, type_ = BARABASI_ALBERT)
 
+# Plot initial graph
 plot_graph(G, colortype = MAP_UNCERTAINTY)
 
 # Runs simulation
 run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_UNCERTAINTY)
 
-# Plot graph
+# Plot final graph
 plot_graph(G)
