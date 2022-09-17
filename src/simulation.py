@@ -42,7 +42,7 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 		# Perform diffusion on each node
 		for node in list(uncertainties.keys()):
 			# Calculate decay
-			decay = gamma * (theta_min - uncertainties[node])
+			decay = RATE_OF_DECAY * (theta_min - uncertainties[node])
 
 			# Calculating diffusion
 			diffusion = 0
@@ -50,7 +50,7 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 				diffusion += weights[(node, n) if node < n else (n, node)] * (uncertainties[n] - uncertainties[node])
 
 			# Updating uncertainty
-			uncertainties[node] += (decay + c * diffusion) * dt
+			uncertainties[node] += (decay + RATE_OF_DIFFUSION * diffusion) * dt
 
 		# Setting new uncertainties
 		nx.set_node_attributes(G, uncertainties, 'uncertainty')
