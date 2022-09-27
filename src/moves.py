@@ -41,18 +41,18 @@ def propaganda(G: nx.Graph, red_weights: list, potency: int, uncertainty_int: li
 	uncertainties = nx.get_node_attributes(G, 'uncertainty')
 
 	# Iterates over nodes to increase or decrease uncertainty
-	for i in G.nodes():#range(len(willvotes)):
+	for i in G.nodes():
 		# If the node will vote, increases uncertiainty
 		if willvotes[i]:
-			uncertainties[i] += (potency * RED_TEAM_POTENCY_CHANGE)
+			uncertainties[i] += (potency * RED_TEAM_POTENCY_CHANGE) * red_weights[i]
 		# If node will not vote, decreases uncertainty
 		elif not willvotes[i]:
-			uncertainties[i] -= (potency * RED_TEAM_POTENCY_CHANGE)
+			uncertainties[i] -= (potency * RED_TEAM_POTENCY_CHANGE) * red_weights[i]
 		
 		# Ensures the uncertainty is kept within the allowed range
 		if uncertainties[i] < uncertainty_int[0]:
 			uncertainties[i] = uncertainty_int[0]
-		elif uncertainties[i] < uncertainty_int[1]:
+		elif uncertainties[i] > uncertainty_int[1]:
 			uncertainties[i] = uncertainty_int[1]
 		
 	# Setting new uncertainties and willvotes
@@ -76,7 +76,7 @@ def educate(G: nx.Graph, uncertainty_int: list, node: int, red_weights: list) ->
 
 	# Sets the new willvote/uncertainty attributes
 	nx.set_node_attributes(G, willvotes, "willvote")
-	nx.set_node_attributes(G, uncertainties, "willvote")
+	nx.set_node_attributes(G, uncertainties, "uncertainty")
 
 	return G
 

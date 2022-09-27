@@ -20,16 +20,16 @@ type_ = BARABASI_ALBERT
 new_edges = 4
 
 # Defining uncertainty interval
-uncertainty_int = [-0.5, 0.5]
+uncertainty_int = [-0.5, 1.0]
 
 # Generate graph
-G = generate_graph(100, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
+G = generate_graph(20, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
 
 # Plot initial graph
-plot_graph(G, colortype = MAP_UNCERTAINTY)
+plot_graph(G, uncertainty_int, colortype = MAP_WILLVOTE)
 
 # Runs simulation
-run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_UNCERTAINTY, print_summary=True)
+run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_UNCERTAINTY, print_summary=False, plot_statistics=True)
 
 # Plot final graph
-plot_graph(G)
+plot_graph(G, uncertainty_int, colortype=MAP_WILLVOTE)

@@ -18,18 +18,18 @@ class RandomBlueAgent(Agent):
 			
 			if move == 'connect':
 				# Generating node 1 and 2
-				node1 = randint(0, len(G.nodes()) - 1)
-				node2 = randint(0, len(G.nodes()) - 1)
+				node1 = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
+				node2 = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
 				
 				# Ensuring node 1 and node 2 are not the same
 				while node2 == node1:
-					node2 = randint(0, len(G.nodes()) - 1)
+					node2 = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
 				
 				# Returning moce
 				return {'move': move, 'nodes': [node1, node2]}
 			else:
 				# Generate node to educate
-				node = randint(0, len(G.nodes()) - 1)
+				node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
 
 				# Returning move
 				return {'move': move, 'node': node}

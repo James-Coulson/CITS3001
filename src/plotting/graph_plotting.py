@@ -16,12 +16,13 @@ from ..constants import *
 
 # ----- Graph PLotting Methods ----- #
 
-def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block: bool = True, pos = None, colortype: int = MAP_TEAMS):
+def plot_graph(G: nx.Graph, uncertainty_int: list, layout_function: Callable = nx.spring_layout, block: bool = True, pos = None, colortype: int = MAP_TEAMS):
 	"""
 	Function used to render a graph
 
 	Parameters:
 		G: Graph object to be drawn
+		uncertainty_int: The uncertainty interval
 		layout_function: A callable to be used to determine the layout of the nodes in the graph (default: nx.spring_layout) 
 		block: Whether the process should block after rendering the graph (default: True)
 		colortype: Determines how the colors of the graph represent the node attributes (default: MAP_TEAMS)
@@ -48,8 +49,7 @@ def plot_graph(G: nx.Graph, layout_function: Callable = nx.spring_layout, block:
 			if i <= 0:
 				color_map.append("blue")
 			else:
-				color_map.append(str(colors[floor(i * 10)]))
-	
+				color_map.append(str(colors[floor(i/(uncertainty_int[1] + 0.01) * 10)]))
 	
 	# Defining pos
 	if pos is None: pos = layout_function(G)

@@ -13,10 +13,13 @@ class RandomRedAgent(Agent):
 		
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
-			move = 'kill' if binomial(1, 0.5) else 'propoganda'
-			print(type(list(G.nodes())))
-			node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
-			return {'move': move, 'node': node}
+			move = 'kill' if binomial(1, 0.7) and len(G.nodes()) > 30 else 'propaganda'
+			if move == 'kill':
+				node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
+				return {'move': move, 'node': node}
+			else:
+				potency = randint(1, 5)
+				return {'move': move, 'potency': potency}
 		
 		return {'move': None}
 

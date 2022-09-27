@@ -77,10 +77,10 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 			if move['move'] == 'kill':
 				G = kill(G, move['node'], blue_weights, red_weights)
 			elif move['move'] == 'propaganda':
-				propaganda(G, red_weights, rd.randint(1, 5), uncertainty_int)
+				G = propaganda(G, red_weights, move['potency'], uncertainty_int)
 		elif player_to_move == BLUE:	# Blue team moves
 			if move['move'] == 'educate':
-				educate(G, uncertainty_int, move['node'], red_weights)
+				G = educate(G, uncertainty_int, move['node'], red_weights)
 			elif move['move'] == 'connect':
 				G = connect(G, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
 		else:
@@ -157,7 +157,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 
 		# Call plot_graph
 		if plot_frequency is not None and t % plot_frequency == 0:
-			plot_graph(G, pos=pos, block=False, colortype = colortype)
+			plot_graph(G, uncertainty_int, pos=pos, block=False, colortype = colortype)
 
 	# Printing simulation ended
 	print("Simulation ended")
