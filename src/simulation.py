@@ -34,8 +34,28 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 	# Obtaining weights of the graph
 	weights = nx.get_edge_attributes(G, 'weight')
 
+	# Player to move variable
+	player_to_move = RED
+
 	# Perform simulation
 	for t in range(max_time):
+		# ---------------- Player moves ---------------- #
+		# Getting player moves
+		if player_to_move == RED:
+			pass
+		elif player_to_move == BLUE:
+			pass
+		else:
+			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
+
+		# Increment player_to_move
+		player_to_move = (player_to_move + 1) % 2
+
+		# Increment player's energy
+		
+
+		# ---------------- Perform time increment ---------------- #
+
 		# Performing diffusion
 		uncertainties = nx.get_node_attributes(G, 'uncertainty')
 

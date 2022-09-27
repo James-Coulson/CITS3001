@@ -20,6 +20,8 @@ gamma = 0.05		# Rate of decay
 dt = 0.05			# Time increments
 
 # ----- Agent Constants ----- #
-# Constatnts used by the agents
-RED_TEAM_ENERGY_RECOV_RATE = 0.1
-BLUE_TEAM_ENERGY_RECOV_RATE = 0.2
+# Constants used by the agents
+RED = 1									# Red team identifier
+BLUE = 2								# Blue team identifier
+RED_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for red team
+BLUE_TEAM_ENERGY_RECOV_RATE = 0.2		# Rate of energy recovery for blue team
