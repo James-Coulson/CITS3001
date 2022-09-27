@@ -23,3 +23,9 @@ dt = 0.05			# Time increments
 # Constatnts used by the agents
 RED_TEAM_ENERGY_RECOV_RATE = 0.1
 BLUE_TEAM_ENERGY_RECOV_RATE = 0.2
+
+# ----- Moves Constants ----- #
+RED_TEAM_REMOVE_CONN = 0.02		# TODO: Implement as parameter
+RED_TEAM_POTENCY_CHANGE = 0.2
+
+
