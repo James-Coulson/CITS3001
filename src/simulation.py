@@ -11,19 +11,26 @@ import networkx as nx
 # Local imports
 from .constants import *
 from .plotting.graph_plotting import plot_graph
+from src.agents.abstract_agent import Agent
+from src.agents.blue_agents import RandomBlueAgent
+from src.agents.red_agents import RandomRedAgent
 
 # ----- Simulation Methods ----- #
 
-def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, colortype = MAP_TEAMS):
+def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent: Agent = RandomRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
+				   colortype = MAP_TEAMS, print_summary: bool = False):
 	"""
 	Runs the simulation on a given graph
 
 	Parameters:
 		G: The given graph
+		blue_agent: Blue agent to be used. (default: RandomBlueAgent())
+		red_agent: Red agent to be used. (default: RandomRedAgent())
 		max_time: The maximum number of interations of the simulation (default: 100)
 		uncertainty_int: The uncertainty interval (default [-0.5, 0.5])
 		plot_frequency: The frequency of the plot redrawing, if set to None a graph will not be plotted (default: None)
 		colortype: The type of color mapping used for a plot (default: MAP_TEAMS))
+		print_summary: Whether the summary's from the agents should be printed
 	"""
 	# Defining pos
 	pos = nx.spring_layout(G)
@@ -37,22 +44,36 @@ def run_simulation(G: nx.Graph, max_time: int = 100, uncertainty_int: list = [-0
 	# Player to move variable
 	player_to_move = RED
 
+	# Calling intialize for both agents
+	blue_agent.initialize()
+	red_agent.initialize()
+
 	# Perform simulation
 	for t in range(max_time):
 		# ---------------- Player moves ---------------- #
 		# Getting player moves
 		if player_to_move == RED:
-			pass
+			move = red_agent.update(G, [1] * len(G.nodes()))
 		elif player_to_move == BLUE:
-			pass
+			move = blue_agent.update(G, [1] * len(G.nodes()))
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 
+		# Increment player's energy
+		red_agent.energy += RED_TEAM_ENERGY_RECOV_RATE
+		blue_agent.energy += BLUE_TEAM_ENERGY_RECOV_RATE
+
+		# Print agent summary
+		if print_summary:
+			if player_to_move == RED:
+				print(f"Red Team Summary:\n{red_agent.get_summary()}")
+			elif player_to_move == BLUE:
+				print(f"Blue Team Summary:\n{blue_agent.get_summary()}")
+			else:
+				raise ValueError(f"Invalid player to move value. value:{player_to_move}")
+
 		# Increment player_to_move
 		player_to_move = (player_to_move + 1) % 2
-
-		# Increment player's energy
-		
 
 		# ---------------- Perform time increment ---------------- #
 
