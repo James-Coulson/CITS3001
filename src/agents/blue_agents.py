@@ -14,9 +14,9 @@ class RandomBlueAgent(Agent):
 		
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
-			move = 'new_edge' if binomial(1, 0.5) else 'educate'
+			move = 'connect' if binomial(1, 0.5) else 'educate'
 			
-			if move == 'new_edge':
+			if move == 'connect':
 				# Generating node 1 and 2
 				node1 = randint(0, len(G.nodes()) - 1)
 				node2 = randint(0, len(G.nodes()) - 1)
@@ -26,7 +26,7 @@ class RandomBlueAgent(Agent):
 					node2 = randint(0, len(G.nodes()) - 1)
 				
 				# Returning moce
-				return {'move': move, 'node1': node1, 'node2': node2}
+				return {'move': move, 'nodes': [node1, node2]}
 			else:
 				# Generate node to educate
 				node = randint(0, len(G.nodes()) - 1)

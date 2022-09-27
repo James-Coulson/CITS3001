@@ -1,5 +1,5 @@
 # Imports
-from random import randint
+from random import randint, sample
 import networkx as nx
 from numpy.random import binomial
 from .abstract_agent import Agent
@@ -14,7 +14,8 @@ class RandomRedAgent(Agent):
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
 			move = 'kill' if binomial(1, 0.5) else 'propoganda'
-			node = randint(0, len(G.nodes()) - 1)
+			print(type(list(G.nodes())))
+			node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
 			return {'move': move, 'node': node}
 		
 		return {'move': None}

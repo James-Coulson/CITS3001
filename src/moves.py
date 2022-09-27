@@ -41,7 +41,7 @@ def propaganda(G: nx.Graph, red_weights: list, potency: int, uncertainty_int: li
 	uncertainties = nx.get_node_attributes(G, 'uncertainty')
 
 	# Iterates over nodes to increase or decrease uncertainty
-	for i in range(len(willvotes)):
+	for i in G.nodes():#range(len(willvotes)):
 		# If the node will vote, increases uncertiainty
 		if willvotes[i]:
 			uncertainties[i] += (potency * RED_TEAM_POTENCY_CHANGE)

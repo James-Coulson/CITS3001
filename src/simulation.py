@@ -16,6 +16,7 @@ from .plotting.graph_plotting import plot_graph
 from src.agents.abstract_agent import Agent
 from src.agents.blue_agents import RandomBlueAgent
 from src.agents.red_agents import RandomRedAgent
+from .moves import *
 
 # ----- Simulation Methods ----- #
 
@@ -52,9 +53,13 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 	red_agent.initialize()
 
 	# Defining statistics variables
-	time = list()
 	stats = {"time": list(), "uncertainty_avg_up_stdev": list(), "uncertainty_avg": list(), "uncertainty_avg_down_stdev": list(),
 			 "willvote_prop": list()}
+
+	# Red and Blue agent weights
+	# TODO: Better calculation of weights, add more chance to not have connection
+	red_weights = [rd.uniform(0,1)] * len(G.nodes())
+	blue_weights = [rd.uniform(0,1)] * len(G.nodes())
 
 	# Perform simulation
 	for t in range(max_time):
@@ -64,6 +69,20 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 			move = red_agent.update(G, [1] * len(G.nodes()))
 		elif player_to_move == BLUE:
 			move = blue_agent.update(G, [1] * len(G.nodes()))
+		else:
+			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
+		
+		# Executes the player's move
+		if player_to_move == RED:	# Red team moves
+			if move['move'] == 'kill':
+				G = kill(G, move['node'], blue_weights, red_weights)
+			elif move['move'] == 'propaganda':
+				propaganda(G, red_weights, rd.randint(1, 5), uncertainty_int)
+		elif player_to_move == BLUE:	# Blue team moves
+			if move['move'] == 'educate':
+				educate(G, uncertainty_int, move['node'], red_weights)
+			elif move['move'] == 'connect':
+				G = connect(G, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 
@@ -87,6 +106,9 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 
 		# Performing diffusion
 		uncertainties = nx.get_node_attributes(G, 'uncertainty')
+
+		# Getting new weights
+		weights = nx.get_edge_attributes(G, 'weight')
 
 		# Perform diffusion on each node
 		for node in list(uncertainties.keys()):
