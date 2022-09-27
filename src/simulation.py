@@ -14,6 +14,7 @@ from .plotting.graph_plotting import plot_graph
 from src.agents.abstract_agent import Agent
 from src.agents.blue_agents import RandomBlueAgent
 from src.agents.red_agents import RandomRedAgent
+from .moves import *
 
 # ----- Simulation Methods ----- #
 
@@ -48,6 +49,11 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 	blue_agent.initialize()
 	red_agent.initialize()
 
+	# Red and Blue agent weights
+	# TODO: Better calculation of weights, add more chance to not have connection
+	red_weights = [rd.uniform(0,1)] * len(G.nodes())
+	blue_weights = [rd.uniform(0,1)] * len(G.nodes())
+
 	# Perform simulation
 	for t in range(max_time):
 		# ---------------- Player moves ---------------- #
@@ -56,6 +62,20 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 			move = red_agent.update(G, [1] * len(G.nodes()))
 		elif player_to_move == BLUE:
 			move = blue_agent.update(G, [1] * len(G.nodes()))
+		else:
+			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
+		
+		# Executes the player's move
+		if player_to_move == RED:	# Red team moves
+			if move['moves'] == 'kill':
+				kill(G, move['node'], blue_weights, red_weights)
+			elif move['moves'] == 'propaganda':
+				propaganda(G, red_weights, rd.randint(1, 5), uncertainty_int)
+		elif player_to_move == BLUE:	# Blue team moves
+			if move['moves'] == 'educate':
+				educate(G, uncertainty_int, move['node'], red_weights)
+			elif move['moves'] == 'connect':
+				connect(G, move['nodes'])		# ! Please note it uses a tuple of 2 nodes, thus the key 'nodes' instead of 'node'
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 
