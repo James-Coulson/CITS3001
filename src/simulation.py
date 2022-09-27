@@ -67,15 +67,15 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		
 		# Executes the player's move
 		if player_to_move == RED:	# Red team moves
-			if move['moves'] == 'kill':
-				kill(G, move['node'], blue_weights, red_weights)
-			elif move['moves'] == 'propaganda':
+			if move['move'] == 'kill':
+				G = kill(G, move['node'], blue_weights, red_weights)
+			elif move['move'] == 'propaganda':
 				propaganda(G, red_weights, rd.randint(1, 5), uncertainty_int)
 		elif player_to_move == BLUE:	# Blue team moves
-			if move['moves'] == 'educate':
+			if move['move'] == 'educate':
 				educate(G, uncertainty_int, move['node'], red_weights)
-			elif move['moves'] == 'connect':
-				connect(G, move['nodes'])		# ! Please note it uses a tuple of 2 nodes, thus the key 'nodes' instead of 'node'
+			elif move['move'] == 'connect':
+				G = connect(G, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 
@@ -99,6 +99,9 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 
 		# Performing diffusion
 		uncertainties = nx.get_node_attributes(G, 'uncertainty')
+
+		# Getting new weights
+		weights = nx.get_edge_attributes(G, 'weight')
 
 		# Perform diffusion on each node
 		for node in list(uncertainties.keys()):
