@@ -7,6 +7,8 @@
 # Expernal imports
 import random as rd
 import networkx as nx
+from statistics import mean, stdev
+import matplotlib.pyplot as plt
 
 # Local imports
 from .constants import *
@@ -18,7 +20,7 @@ from src.agents.red_agents import RandomRedAgent
 # ----- Simulation Methods ----- #
 
 def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent: Agent = RandomRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
-				   colortype = MAP_TEAMS, print_summary: bool = False):
+				   colortype = MAP_TEAMS, print_summary: bool = False, plot_statistics: bool = False):
 	"""
 	Runs the simulation on a given graph
 
@@ -30,7 +32,8 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		uncertainty_int: The uncertainty interval (default [-0.5, 0.5])
 		plot_frequency: The frequency of the plot redrawing, if set to None a graph will not be plotted (default: None)
 		colortype: The type of color mapping used for a plot (default: MAP_TEAMS))
-		print_summary: Whether the summary's from the agents should be printed
+		print_summary: Whether the summary's from the agents should be printed. (default: False)
+		plot_statistics: Whether to plot statistics at the end of the simulation. (default: False)
 	"""
 	# Defining pos
 	pos = nx.spring_layout(G)
@@ -47,6 +50,11 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 	# Calling intialize for both agents
 	blue_agent.initialize()
 	red_agent.initialize()
+
+	# Defining statistics variables
+	time = list()
+	stats = {"time": list(), "uncertainty_avg_up_stdev": list(), "uncertainty_avg": list(), "uncertainty_avg_down_stdev": list(),
+			 "willvote_prop": list()}
 
 	# Perform simulation
 	for t in range(max_time):
@@ -116,8 +124,40 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		# Sets the new willvote attributes
 		nx.set_node_attributes(G, willvote, "willvote")
 
+		# Recording statistics
+		avg_uncert = mean(uncertainty.values())
+		stdev_uncert = stdev(uncertainty.values())
+		stats["uncertainty_avg"].append(avg_uncert)
+		stats["uncertainty_avg_up_stdev"].append(avg_uncert + stdev_uncert)
+		stats["uncertainty_avg_down_stdev"].append(avg_uncert - stdev_uncert)
+		stats["willvote_prop"].append(sum(willvote.values()) / len(willvote.values()))
+		stats["time"].append(t)
+
 		# Call plot_graph
 		if plot_frequency is not None and t % plot_frequency == 0:
 			plot_graph(G, pos=pos, block=False, colortype = colortype)
+
+	# Printing simulation ended
+	print("Simulation ended")
+	plt.show()
+
+	if plot_statistics:
+		# Plotting uncertainty chart
+		plt.title("Uncertainty vs. Time")
+		plt.xlabel("Time $t$")
+		plt.ylabel("Avg. Uncertainty")
+		plt.plot(stats["time"], stats["uncertainty_avg_down_stdev"], label="Avg. Uncertainty - 1 stdev")
+		plt.plot(stats["time"], stats["uncertainty_avg"], label="Avg. Uncertainty")
+		plt.plot(stats["time"], stats["uncertainty_avg_up_stdev"], label="Avg. Uncertainty + 1 stdev")
+		plt.legend()
+		plt.show()
+
+		# Plotting voting percentage
+		plt.title("Proportion of nodes that will vote vs. Time")
+		plt.xlabel("Time $t$")
+		plt.ylabel("Proportion will vote $\%$")
+		plt.plot(stats["time"], stats["willvote_prop"], label="Proportion will vote")
+		plt.legend()
+		plt.show()
 
 	return G

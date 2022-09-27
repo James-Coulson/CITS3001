@@ -12,6 +12,8 @@ import random as rd
 # Local imports
 from .constants import *
 
+# TODO: Have energy of the agent be checked and reduced when a move occurs
+
 # ----- Red Team Moves ----- #
 
 # Removes the node from the graph (Red)
