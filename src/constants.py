@@ -16,6 +16,10 @@ MAP_UNCERTAINTY = 3
 # ----- Graph Dynamic System Constants ----- #
 # Constants used by the graph's dynamic system.
 c = 1				# Rate of diffusion
-gamma = 0.5		# Rate of decay
+gamma = 0.05		# Rate of decay
 dt = 0.05			# Time increments
 
+# ----- Agent Constants ----- #
+# Constatnts used by the agents
+RED_TEAM_ENERGY_RECOV_RATE = 0.1
+BLUE_TEAM_ENERGY_RECOV_RATE = 0.2

@@ -12,11 +12,18 @@ class Agent(ABC):
 	"""
 	
 	@abstractmethod
-	def initialize(self):
+	def initialize(self, energy: float = 1):
 		"""
 		The initialize function is used to initialise any internal logic that is used by the 
-		agent. This function is called just before the simulation begins
+		agent. This function is called just before the simulation begins.
+
+		The implementing calss should call self.super()
+
+		Parameters:
+			energy: Energy represents the maximum energy a team can have and should be a value between 0 and 1. (default: 1)
 		"""
+		self.energy = energy
+		self.max_energy = energy
 		pass
 
 	@abstractmethod
