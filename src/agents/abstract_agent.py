@@ -12,7 +12,7 @@ class Agent(ABC):
 	"""
 	
 	@abstractmethod
-	def initialize(self, energy: float = 1):
+	def initialize(self, energy: float = 1.0):
 		"""
 		The initialize function is used to initialise any internal logic that is used by the 
 		agent. This function is called just before the simulation begins.
