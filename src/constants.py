@@ -28,7 +28,7 @@ BLUE_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for blue team
 RED_TEAM_WEIGHT_RECOV_RATE = 0.05		# Rate of red edge weights recovery
 
 # ----- Moves Constants ----- #
-RED_TEAM_POTENCY_CHANGE = 0.1
+RED_TEAM_POTENCY_CHANGE = 0.05
 RED_TEAM_FOLLOWER_LOSS_PROB = 0.02
 
 # Move costs
