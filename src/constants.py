@@ -28,9 +28,10 @@ BLUE_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for blue team
 
 # ----- Moves Constants ----- #
 RED_TEAM_POTENCY_CHANGE = 0.1
+RED_TEAM_FOLLOWER_LOSS_PROB = 0.02
 
 # Move costs
-KILL_COST = -0.3
+KILL_COST = -0.5
 PROPAGANDA_COST = -0.05
 EDUCATE_COST = -0.5
 CONNECT_COST = -0.05
