@@ -1,5 +1,7 @@
+# Python caching
 src/__pycache__/
 src/plotting/__pycache__/
+src/agents/__pycache__/
 
 # Mac
 .DS_Store
