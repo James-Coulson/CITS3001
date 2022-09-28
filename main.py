@@ -1,6 +1,8 @@
 # ----- Imports ----- #
 
 # Local imports
+from src.agents.blue_agents import SmartBlueAgent
+from src.agents.red_agents import SmartRedAgent
 from src.constants import *
 from src.graph_generation import generate_graph
 from src.plotting.graph_plotting import plot_graph
@@ -23,13 +25,13 @@ new_edges = 4
 uncertainty_int = [-0.5, 1.0]
 
 # Generate graph
-G = generate_graph(20, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
+G = generate_graph(100, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
 
 # Plot initial graph
 plot_graph(G, uncertainty_int, colortype = MAP_WILLVOTE)
 
 # Runs simulation
-run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_UNCERTAINTY, print_summary=False, plot_statistics=True)
+run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_UNCERTAINTY, print_summary=False, plot_statistics=False, red_agent=SmartRedAgent(), blue_agent=SmartBlueAgent())
 
 # Plot final graph
 plot_graph(G, uncertainty_int, colortype=MAP_WILLVOTE)
