@@ -5,6 +5,7 @@
 # ----- Imports ----- #
 
 # Expernal imports
+from decimal import MAX_EMAX
 import random as rd
 import networkx as nx
 from statistics import mean, stdev
@@ -13,10 +14,11 @@ import matplotlib.pyplot as plt
 # Local imports
 from .constants import *
 from .plotting.graph_plotting import plot_graph
-from src.agents.abstract_agent import Agent
-from src.agents.blue_agents import RandomBlueAgent
-from src.agents.red_agents import RandomRedAgent
+from .agents.abstract_agent import Agent
+from .agents.blue_agents import RandomBlueAgent
+from .agents.red_agents import RandomRedAgent
 from .moves import *
+from .utility import clamp
 
 # ----- Simulation Methods ----- #
 
@@ -54,7 +56,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 
 	# Defining statistics variables
 	stats = {"time": list(), "uncertainty_avg_up_stdev": list(), "uncertainty_avg": list(), "uncertainty_avg_down_stdev": list(),
-			 "willvote_prop": list()}
+			 "willvote_prop": list(), "blue_energy": list(), "red_energy": list()}
 
 	# Red and Blue agent weights
 	# TODO: Better calculation of weights, add more chance to not have connection
@@ -75,20 +77,24 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		# Executes the player's move
 		if player_to_move == RED:	# Red team moves
 			if move['move'] == 'kill':
-				G = kill(G, move['node'], blue_weights, red_weights)
+				G, energy = kill(G, red_agent, move['node'], blue_weights, red_weights)
+				red_agent.energy += energy
 			elif move['move'] == 'propaganda':
-				G = propaganda(G, red_weights, move['potency'], uncertainty_int)
+				G, energy = propaganda(G, red_agent, red_weights, move['potency'], uncertainty_int)
+				red_agent.energy += energy
 		elif player_to_move == BLUE:	# Blue team moves
 			if move['move'] == 'educate':
-				G = educate(G, uncertainty_int, move['node'], red_weights)
+				G, energy = educate(G, blue_agent, uncertainty_int, move['node'], red_weights)
+				blue_agent.energy += energy
 			elif move['move'] == 'connect':
-				G = connect(G, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
+				G, energy = connect(G, blue_agent, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
+				blue_agent.energy += energy
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 
 		# Increment player's energy
-		red_agent.energy += RED_TEAM_ENERGY_RECOV_RATE
-		blue_agent.energy += BLUE_TEAM_ENERGY_RECOV_RATE
+		red_agent.energy = clamp(red_agent.energy + RED_TEAM_ENERGY_RECOV_RATE, 0, red_agent.max_energy)
+		blue_agent.energy = clamp(blue_agent.energy + BLUE_TEAM_ENERGY_RECOV_RATE, 0, blue_agent.max_energy)
 
 		# Print agent summary
 		if print_summary:
@@ -152,6 +158,8 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		stats["uncertainty_avg"].append(avg_uncert)
 		stats["uncertainty_avg_up_stdev"].append(avg_uncert + stdev_uncert)
 		stats["uncertainty_avg_down_stdev"].append(avg_uncert - stdev_uncert)
+		stats["red_energy"].append(red_agent.energy)
+		stats["blue_energy"].append(blue_agent.energy)
 		stats["willvote_prop"].append(sum(willvote.values()) / len(willvote.values()))
 		stats["time"].append(t)
 
@@ -179,6 +187,15 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		plt.xlabel("Time $t$")
 		plt.ylabel("Proportion will vote $\%$")
 		plt.plot(stats["time"], stats["willvote_prop"], label="Proportion will vote")
+		plt.legend()
+		plt.show()
+
+		# Plotting Energy Levels
+		plt.title("Agent energy levels vs. Time")
+		plt.xlabel("Time $t$")
+		plt.ylabel("Energy Level")
+		plt.plot(stats["time"], stats["red_energy"], label="Red energy")
+		plt.plot(stats["time"], stats["blue_energy"], label="Blue energy")
 		plt.legend()
 		plt.show()
 
