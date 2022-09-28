@@ -14,6 +14,7 @@ class RandomRedAgent(Agent):
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
 			move = 'kill' if binomial(1, 0.7) and len(G.nodes()) > 30 else 'propaganda'
+			# Chooses the node with the highest total weight of it's edges and will vote to kill
 			if move == 'kill':
 				node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
 				return {'move': move, 'node': node}
@@ -25,3 +26,38 @@ class RandomRedAgent(Agent):
 
 	def get_summary(self) -> dict:
 		return "Not a whole lot going on in here ........ cause it's random"
+
+class SmartRedAgent(Agent):
+		#
+	#	A completely random agent
+	#
+	def initialize(self, energy: float = 1.0):
+		return super().initialize(energy)
+		
+	def update(self, G: nx.Graph, weights: list):
+		if self.energy > 0.1:
+			move = 'kill' if binomial(1, 0.7) and len(G.nodes()) > 30 else 'propaganda'
+			# Chooses the node with the highest total weight of it's edges and will vote to kill
+			if move == 'kill':
+				willvotes = nx.get_node_attributes(G, 'willvote')
+				max_weight = 0
+				node = None
+				for i in G.nodes():		# for each node
+					node_weight = 0
+					for j in G.edges(i, data="weight"):		# Gets the edge weights for the node
+						node_weight += j[2]
+					
+					# If total weight is higher than current max and node will vote, assigns new target
+					if node_weight > max_weight and willvotes[i]:
+						max_weight = node_weight
+						node = i
+
+				return {'move': move, 'node': node}
+			else:
+				potency = randint(1, 5)
+				return {'move': move, 'potency': potency}
+		
+		return {'move': None}
+
+	def get_summary(self) -> dict:
+		return "SMART AGENT"		# TODO:  statistics
