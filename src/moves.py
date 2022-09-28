@@ -9,6 +9,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import random as rd
 
+from .agents.abstract_agent import Agent
+
 # Local imports
 from .constants import *
 
@@ -17,24 +19,35 @@ from .constants import *
 # ----- Red Team Moves ----- #
 
 # Removes the node from the graph (Red)
-def kill(G: nx.Graph, node: int,  blue_weights: list, red_weights: list) -> nx.Graph:
+def kill(G: nx.Graph, red_agent: Agent, node: int,  blue_weights: list, red_weights: list) -> nx.Graph:
+	# Check red team has enough energy
+	if red_agent.energy < -KILL_COST:
+		return G, 0.0
+
 	# Removes the node from the graph
 	G.remove_node(node)
 	
 	# Removing connection of the agents to the green population
 	red_weights[node] = 0
 	blue_weights[node] = 0
-	return G
+
+	# Calcualting energy change
+	energy = KILL_COST
+
+	return G, energy
 
 # Broadcasts propaganda to nodes that are connected to the agent - potential to lose edges (Red)
 # TODO: implement weight for losing edge connection into parameters
-def propaganda(G: nx.Graph, red_weights: list, potency: int, uncertainty_int: list) -> nx.Graph:
-	
+def propaganda(G: nx.Graph, red_agent: Agent, red_weights: list, potency: int, uncertainty_int: list) -> nx.Graph:
+	# Check red team has enough energy
+	if red_agent.energy < -PROPAGANDA_COST:
+		return G, 0.0
+
 	# Iterates over each connection to red agent
 	for i in range(len(red_weights)):
 		# Potentially loses a connection
 		if rd.uniform(0, 1) < (potency * RED_TEAM_POTENCY_CHANGE):
-			red_weights[i] = 0
+			red_weights[i] *= 0.5
 	
 	# Gets the node attributes
 	willvotes = nx.get_node_attributes(G, 'willvote')
@@ -59,12 +72,19 @@ def propaganda(G: nx.Graph, red_weights: list, potency: int, uncertainty_int: li
 	nx.set_node_attributes(G, uncertainties, 'uncertainty')
 	nx.set_node_attributes(G, willvotes, 'willvote')
 
-	return G
+	# Calculating energy change
+	energy = PROPAGANDA_COST
+
+	return G, energy
 
 # ----- Blue Team Moves ----- #
 
 # Educates a node, causing it to be certain to vote and removes connection to red
-def educate(G: nx.Graph, uncertainty_int: list, node: int, red_weights: list) -> nx.Graph:
+def educate(G: nx.Graph, blue_agent: Agent, uncertainty_int: list, node: int, red_weights: list) -> nx.Graph:
+	# Check blue team has enough energy
+	if blue_agent.energy < -EDUCATE_COST:
+		return G, 0.0
+	
 	# Gets the node attributes
 	willvotes = nx.get_node_attributes(G, 'willvote')
 	uncertainties = nx.get_node_attributes(G, 'uncertainty')
@@ -78,12 +98,22 @@ def educate(G: nx.Graph, uncertainty_int: list, node: int, red_weights: list) ->
 	nx.set_node_attributes(G, willvotes, "willvote")
 	nx.set_node_attributes(G, uncertainties, "uncertainty")
 
-	return G
+	# Calculating energy used
+	energy = EDUCATE_COST
+
+	return G, energy
 
 # Connects two green nodes together and assigns it a high weight value
-def connect(G: nx.Graph, nodes: list) -> nx.Graph:
+def connect(G: nx.Graph, blue_agent: Agent, nodes: list) -> nx.Graph:
+	# Check blue team has enough energy
+	if blue_agent.energy < -CONNECT_COST:
+		return G, 0.0
+	
 	# Adds to edge to graph
 	edge_weight = rd.uniform(0.7, 1.0)
 	G.add_edge(nodes[0], nodes[1], weight=edge_weight)
 
-	return G
+	# Calculating energy used
+	energy = CONNECT_COST
+
+	return G, energy
