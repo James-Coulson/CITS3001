@@ -27,15 +27,17 @@ RED_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for red team
 BLUE_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for blue team
 RED_TEAM_WEIGHT_RECOV_RATE = 0.05		# Rate of red edge weights recovery
 
+
 # ----- Moves Constants ----- #
 RED_TEAM_POTENCY_CHANGE = 0.05
 RED_TEAM_FOLLOWER_LOSS_PROB = 0.02
+BLUE_TEAM_EDUCATE_AMOUNT = 3
 
 # Grey agent probabilities
 GREY_AGENT_RED_PROB = 0.4
 
 # Move costs
 KILL_COST = -0.7
-PROPAGANDA_COST = -0.05
+PROPAGANDA_COST = -0.15
 EDUCATE_COST = -0.3
 CONNECT_COST = -0.05

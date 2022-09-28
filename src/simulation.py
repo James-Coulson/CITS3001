@@ -70,9 +70,9 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		# ---------------- Player moves ---------------- #
 		# Getting player moves
 		if player_to_move == RED:
-			move = red_agent.update(G, [1] * len(G.nodes()))
+			move = red_agent.update(G, red_weights)
 		elif player_to_move == BLUE:
-			move = blue_agent.update(G, [1] * len(G.nodes()))
+			move = blue_agent.update(G, blue_weights)
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 		
@@ -86,7 +86,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 				red_agent.energy += energy
 		elif player_to_move == BLUE:	# Blue team moves
 			if move['move'] == 'educate':
-				G, energy = educate(G, blue_agent, uncertainty_int, move['node'], red_weights)
+				G, energy = educate(G, blue_agent, uncertainty_int, move['nodes'], red_weights)
 				blue_agent.energy += energy
 			elif move['move'] == 'connect':
 				G, energy = connect(G, blue_agent, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'

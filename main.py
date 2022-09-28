@@ -31,7 +31,7 @@ G = generate_graph(100, prob = prob, new_edges = new_edges, uncertainty_int = un
 plot_graph(G, uncertainty_int, colortype = MAP_WILLVOTE)
 
 # Runs simulation
-run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_UNCERTAINTY, print_summary=False, plot_statistics=True, red_agent=SmartRedAgent(), blue_agent=SmartBlueAgent())
+run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=SmartRedAgent(), blue_agent=SmartBlueAgent())
 
 # Plot final graph
 plot_graph(G, uncertainty_int, colortype=MAP_WILLVOTE)
