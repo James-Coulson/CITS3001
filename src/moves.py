@@ -24,6 +24,12 @@ def kill(G: nx.Graph, red_agent: Agent, node: int,  blue_weights: list, red_weig
 	if red_agent.energy < -KILL_COST:
 		return G, 0.0
 
+	# Iterates over each connection to red agent
+	for i in range(len(red_weights)):
+		# Potentially loses a connection
+		if rd.uniform(0, 1) < (3 * RED_TEAM_FOLLOWER_LOSS_PROB):
+			red_weights[i] *= 0
+
 	# Removes the node from the graph
 	G.remove_node(node)
 	

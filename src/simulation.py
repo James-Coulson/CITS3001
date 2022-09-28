@@ -152,6 +152,10 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		# Sets the new willvote attributes
 		nx.set_node_attributes(G, willvote, "willvote")
 
+		# Red Weights regenerate over time
+		for i in range(len(red_weights)):
+			red_weights[i] += RED_TEAM_WEIGHT_RECOV_RATE
+
 		# Recording statistics
 		avg_uncert = mean(uncertainty.values())
 		stdev_uncert = stdev(uncertainty.values())

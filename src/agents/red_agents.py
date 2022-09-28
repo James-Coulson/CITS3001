@@ -13,7 +13,7 @@ class RandomRedAgent(Agent):
 		
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
-			move = 'kill' if binomial(1, 0.7) and len(G.nodes()) > 30 else 'propaganda'
+			move = 'kill' if binomial(1, 0.3) and len(G.nodes()) > 30 else 'propaganda'
 			# Chooses the node with the highest total weight of it's edges and will vote to kill
 			if move == 'kill':
 				node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
@@ -52,10 +52,13 @@ class SmartRedAgent(Agent):
 						max_weight = node_weight
 						node = i
 
-				return {'move': move, 'node': node}
-			else:
-				potency = randint(1, 5)
-				return {'move': move, 'potency': potency}
+				if node is not None:
+					return {'move': move, 'node': node}
+				
+				move = 'propoganda'
+			
+			potency = randint(1, 5)
+			return {'move': move, 'potency': potency}
 		
 		return {'move': None}
 
