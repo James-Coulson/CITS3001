@@ -86,7 +86,7 @@ def propaganda(G: nx.Graph, red_agent: Agent, red_weights: list, potency: int, u
 # ----- Blue Team Moves ----- #
 
 # Educates a node, causing it to be certain to vote and removes connection to red
-def educate(G: nx.Graph, blue_agent: Agent, uncertainty_int: list, node: int, red_weights: list) -> nx.Graph:
+def educate(G: nx.Graph, blue_agent: Agent, uncertainty_int: list, nodes: list, red_weights: list) -> nx.Graph:
 	# Check blue team has enough energy
 	if blue_agent.energy < -EDUCATE_COST:
 		return G, 0.0
@@ -95,10 +95,11 @@ def educate(G: nx.Graph, blue_agent: Agent, uncertainty_int: list, node: int, re
 	willvotes = nx.get_node_attributes(G, 'willvote')
 	uncertainties = nx.get_node_attributes(G, 'uncertainty')
 
-	# Assigns new variables
-	willvotes[node] = True
-	uncertainties[node] = uncertainty_int[0]
-	red_weights[node] = 0
+	# Educates nodes from the list, making them certain and voting for blue
+	for node in nodes:
+		willvotes[node] = True
+		uncertainties[node] = uncertainty_int[0]
+		red_weights[node] = 0
 
 	# Sets the new willvote/uncertainty attributes
 	nx.set_node_attributes(G, willvotes, "willvote")

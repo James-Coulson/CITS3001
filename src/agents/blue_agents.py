@@ -1,7 +1,9 @@
 # Imports
-from random import randint
+from random import randint, sample
 import networkx as nx
 from numpy.random import binomial
+
+from src.constants import BLUE_TEAM_EDUCATE_AMOUNT
 from .abstract_agent import Agent
 
 
@@ -29,11 +31,11 @@ class RandomBlueAgent(Agent):
 				return {'move': move, 'nodes': [node1, node2]}
 			else:
 				
-				# Generate node to educate
-				node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
+				# Generates randomly node to educate
+				nodes = sample(list(G.nodes), BLUE_TEAM_EDUCATE_AMOUNT)
 
 				# Returning move
-				return {'move': move, 'node': node}
+				return {'move': move, 'nodes': nodes}
 
 		return {'move': None}
 
@@ -65,20 +67,24 @@ class SmartBlueAgent(Agent):
 				return {'move': move, 'nodes': [node1, node2]}
 			else:
 				willvotes = nx.get_node_attributes(G, 'willvote')
-				max_weight = 0
-				node = None
+				node_weights = []
+
 				for i in G.nodes():		# for each node
 					node_weight = 0
 					for j in G.edges(i, data="weight"):		# Gets the edge weights for the node
 						node_weight += j[2]
-					
-					# If total weight is higher than current max and node will not vote, assigns new target
-					if node_weight > max_weight and not willvotes[i]:
-						max_weight = node_weight
-						node = i
+					if not willvotes[i]:	# Only counts node if it holds the opinion not to vote
+						node_weights.append([node_weight, i])
+
+				# Gets the nodes with the highest edge weights
+				node_weights.sort()
+				best_weights = node_weights[-BLUE_TEAM_EDUCATE_AMOUNT:]
+				nodes = []
+				for i in best_weights:
+					nodes.append(i[1])
 
 				# Returning move
-				return {'move': move, 'node': node}
+				return {'move': move, 'nodes': nodes}
 
 		return {'move': None}
 

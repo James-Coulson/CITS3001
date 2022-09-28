@@ -14,7 +14,7 @@ from .constants import *
 
 # ----- Graph Generation Methods ----- #
 
-def generate_graph(num_nodes: int, prob: float = 0.1, prob_vote: float = 0.5, uncertainty_int: list = [-0.5, 0.5], new_edges: int = 3, type_: int = ERDOS_RENYI, seed: int = None) -> nx.Graph:
+def generate_graph(num_nodes: int, prob: float = 0.1, prob_vote: float = 0.7, uncertainty_int: list = [-0.5, 0.5], new_edges: int = 3, type_: int = ERDOS_RENYI, seed: int = None) -> nx.Graph:
 	"""
 	Setups up the initial graph to be used in the simulation
 
@@ -53,7 +53,7 @@ def generate_graph(num_nodes: int, prob: float = 0.1, prob_vote: float = 0.5, un
 
 	# Generating opinion
 	for i in range(num_nodes):
-		node_attrs[i]['willvote'] = True if rd.uniform(0, 1) > prob_vote else False
+		node_attrs[i]['willvote'] = True if rd.uniform(0, 1) < prob_vote else False
 
 	# Setting node attributes
 	nx.set_node_attributes(G, node_attrs)
