@@ -12,7 +12,7 @@ class Agent(ABC):
 	"""
 	
 	@abstractmethod
-	def initialize(self, energy: float = 1.0):
+	def initialize(self, energy: float = 1.0, is_gray: bool = False):
 		"""
 		The initialize function is used to initialise any internal logic that is used by the 
 		agent. This function is called just before the simulation begins.
@@ -24,6 +24,7 @@ class Agent(ABC):
 		"""
 		self.energy = energy
 		self.max_energy = energy
+		self.is_gray = is_gray
 		pass
 
 	@abstractmethod
@@ -48,5 +49,15 @@ class Agent(ABC):
 
 		Returns:
 			When called a dictionary is returned which contains details about the current state of the agent.
+		"""
+		pass
+
+	@abstractmethod
+	def get_grey_agent():
+		"""
+		Called in order to produce a grey agent
+
+		Returns:
+			A grey agent
 		"""
 		pass

@@ -31,6 +31,9 @@ RED_TEAM_WEIGHT_RECOV_RATE = 0.05		# Rate of red edge weights recovery
 RED_TEAM_POTENCY_CHANGE = 0.05
 RED_TEAM_FOLLOWER_LOSS_PROB = 0.02
 
+# Grey agent probabilities
+GREY_AGENT_RED_PROB = 0.4
+
 # Move costs
 KILL_COST = -0.7
 PROPAGANDA_COST = -0.05
