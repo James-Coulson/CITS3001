@@ -8,8 +8,8 @@ class RandomRedAgent(Agent):
 	#
 	#	A completely random agent
 	#
-	def initialize(self, energy: float = 1.0):
-		return super().initialize(energy)
+	def initialize(self, energy: float = 1.0, is_gray: bool = False):
+		return super().initialize(energy, is_gray)
 		
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
@@ -26,13 +26,16 @@ class RandomRedAgent(Agent):
 
 	def get_summary(self) -> dict:
 		return "Not a whole lot going on in here ........ cause it's random"
+	
+	def get_grey_agent(self):
+		return RandomRedAgent()
 
 class SmartRedAgent(Agent):
-		#
+	#
 	#	A completely random agent
 	#
-	def initialize(self, energy: float = 1.0):
-		return super().initialize(energy)
+	def initialize(self, energy: float = 1.0, is_gray: bool = False):
+		return super().initialize(energy, is_gray)
 		
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
@@ -61,3 +64,6 @@ class SmartRedAgent(Agent):
 
 	def get_summary(self) -> dict:
 		return "SMART AGENT"		# TODO:  statistics
+	
+	def get_grey_agent(self):
+		return RandomRedAgent()

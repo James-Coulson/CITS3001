@@ -23,12 +23,15 @@ dt = 0.05			# Time increments
 # Constants used by the agents
 RED = 0									# Red team identifier
 BLUE = 1								# Blue team identifier
-RED_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for red team
-BLUE_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for blue team
+RED_TEAM_ENERGY_RECOV_RATE = 0.02		# Rate of energy recovery for red team
+BLUE_TEAM_ENERGY_RECOV_RATE = 0.02		# Rate of energy recovery for blue team
 
 # ----- Moves Constants ----- #
 RED_TEAM_POTENCY_CHANGE = 0.1
 RED_TEAM_FOLLOWER_LOSS_PROB = 0.02
+
+# Grey agent probabilities
+GREY_AGENT_RED_PROB = 0.4
 
 # Move costs
 KILL_COST = -0.5

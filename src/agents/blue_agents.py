@@ -9,11 +9,11 @@ class RandomBlueAgent(Agent):
 	#
 	#	A completely random agent
 	#
-	def initialize(self, energy: float = 1.0):
-		return super().initialize(energy)
+	def initialize(self, energy: float = 1.0, is_gray: bool = False):
+		return super().initialize(energy, is_gray)
 		
 	def update(self, G: nx.Graph, weights: list):
-		if self.energy > 0.1:
+		if self.energy > 0.3:
 			move = 'connect' if binomial(1, 0.5) else 'educate'
 			
 			if move == 'connect':
@@ -34,19 +34,24 @@ class RandomBlueAgent(Agent):
 
 				# Returning move
 				return {'move': move, 'node': node}
+		else:
+			return {"move": 'gray'}
 
 		return {'move': None}
 
 	def get_summary(self) -> dict:
 		return "Not a whole lot going on in here ........ cause it's random"
 
+	def get_grey_agent(self):
+		return RandomBlueAgent()
+
 
 class SmartBlueAgent(Agent):
 	#
 	#	A completely random agent
 	#
-	def initialize(self, energy: float = 1.0):
-		return super().initialize(energy)
+	def initialize(self, energy: float = 1.0, is_gray: bool = False):
+		return super().initialize(energy, is_gray)
 		
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
@@ -84,3 +89,6 @@ class SmartBlueAgent(Agent):
 
 	def get_summary(self) -> dict:
 		return "Not a whole lot going on in here ........ cause it's random"
+
+	def get_grey_agent(self):
+		return SmartBlueAgent()

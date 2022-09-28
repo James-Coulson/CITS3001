@@ -7,6 +7,7 @@
 # Expernal imports
 from decimal import MAX_EMAX
 import random as rd
+from numpy.random import binomial
 import networkx as nx
 from statistics import mean, stdev
 import matplotlib.pyplot as plt
@@ -23,7 +24,7 @@ from .utility import clamp
 # ----- Simulation Methods ----- #
 
 def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent: Agent = RandomRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
-				   colortype = MAP_TEAMS, print_summary: bool = False, plot_statistics: bool = False):
+				   colortype = MAP_TEAMS, print_summary: bool = False, plot_statistics: bool = False, verbose: bool = False):
 	"""
 	Runs the simulation on a given graph
 
@@ -37,6 +38,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		colortype: The type of color mapping used for a plot (default: MAP_TEAMS))
 		print_summary: Whether the summary's from the agents should be printed. (default: False)
 		plot_statistics: Whether to plot statistics at the end of the simulation. (default: False)
+		verbose: Whether text should be printed during the game. (default: False)
 	"""
 	# Defining pos
 	pos = nx.spring_layout(G)
@@ -89,6 +91,22 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 			elif move['move'] == 'connect':
 				G, energy = connect(G, blue_agent, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
 				blue_agent.energy += energy
+			elif move['move'] == 'gray':
+				red = True if binomial(1, GREY_AGENT_RED_PROB) else False
+				grey_agent = red_agent.get_grey_agent() if red else blue_agent.get_grey_agent()
+				grey_agent.initialize(is_gray = True)
+				
+				# Getting move and interpreting move
+				move = grey_agent.update(G, red_weights if red else blue_weights)
+				print(f"Created a grey agent that was red: {red}")
+				if move['move'] == 'kill':
+					G, energy = kill(G, grey_agent, move['node'], blue_weights, red_weights)
+				elif move['move'] == 'propaganda':
+					G, energy = propaganda(G, grey_agent, red_weights, move['potency'], uncertainty_int)
+				if move['move'] == 'educate':
+					G, energy = educate(G, grey_agent, uncertainty_int, move['node'], red_weights)
+				elif move['move'] == 'connect':
+					G, energy = connect(G, grey_agent, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 
@@ -171,6 +189,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 	print("Simulation ended")
 	plt.show()
 
+	# Plotting statistics
 	if plot_statistics:
 		# Plotting uncertainty chart
 		plt.title("Uncertainty vs. Time")
