@@ -46,7 +46,7 @@ def propaganda(G: nx.Graph, red_agent: Agent, red_weights: list, potency: int, u
 	# Iterates over each connection to red agent
 	for i in range(len(red_weights)):
 		# Potentially loses a connection
-		if rd.uniform(0, 1) < (potency * RED_TEAM_POTENCY_CHANGE):
+		if rd.uniform(0, 1) < (potency * RED_TEAM_FOLLOWER_LOSS_PROB):
 			red_weights[i] *= 0.5
 	
 	# Gets the node attributes
