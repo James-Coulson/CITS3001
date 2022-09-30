@@ -15,10 +15,10 @@ class UserBlueAgent(Agent):
 		
 	def update(self, G: nx.Graph, weights: list):
 		# Printing agent summary
-		print(f"------ It's your turn -------")
-		if self.is_gray: print("!! This is the gray agent !!")
+		print(f"------ It's your turn (Blue) -------")
+		if self.is_gray: print("     !! This is the gray agent !!")
 		print(f"You have {round(self.energy, 5)} / {self.max_energy} energy")
-		print("There have threee possible moves\n  - 'connect'\n  - 'educate'\n  - 'gray")
+		print("There have three possible moves\n  - 'connect'\n  - 'educate'\n  - 'gray")
 
 		while True:
 			# Creating new line
@@ -63,6 +63,10 @@ class UserBlueAgent(Agent):
 			
 			elif move == 'gray':
 				return {'move': move}
+			
+			# Something went wrong if you get here
+			print("!!!! Something went wrong. You should be here. !!!!")
+			break
 
 		
 		print("------ Your turn has ended -------")
