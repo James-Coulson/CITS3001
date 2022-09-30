@@ -104,7 +104,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 				elif move['move'] == 'propaganda':
 					G, energy = propaganda(G, grey_agent, red_weights, move['potency'], uncertainty_int)
 				if move['move'] == 'educate':
-					G, energy = educate(G, grey_agent, uncertainty_int, move['node'], red_weights)
+					G, energy = educate(G, grey_agent, uncertainty_int, move['nodes'], red_weights)
 				elif move['move'] == 'connect':
 					G, energy = connect(G, grey_agent, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
 		else:

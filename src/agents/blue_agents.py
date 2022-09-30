@@ -6,6 +6,73 @@ from numpy.random import binomial
 from src.constants import BLUE_TEAM_EDUCATE_AMOUNT
 from .abstract_agent import Agent
 
+class UserBlueAgent(Agent):
+	#
+	#	Agent used for user play
+	#
+	def initialize(self, energy: float = 1.0, is_gray: bool = False):
+		return super().initialize(energy, is_gray)
+		
+	def update(self, G: nx.Graph, weights: list):
+		# Printing agent summary
+		print(f"------ It's your turn -------")
+		if self.is_gray: print("!! This is the gray agent !!")
+		print(f"You have {round(self.energy, 5)} / {self.max_energy} energy")
+		print("There have threee possible moves\n  - 'connect'\n  - 'educate'\n  - 'gray")
+
+		while True:
+			# Creating new line
+			print("")
+
+			# Getting user move and checking it is valid
+			move = input("What move would you like to make: ")
+			if move not in ['connect', 'educate', 'gray']:
+				print(f"{move} is not a valid move")
+				continue
+				
+			if move == 'connect':
+				node1 = int(input("Node 1: "))
+				if node1 not in list(G.nodes):
+					print(f"{node1} is not a valid node")
+					continue
+
+				node2 = int(input("Node 2: "))
+				if node2 not in list(G.nodes):
+					print(f"{node2} is not a valid node")
+					continue
+
+				return {'move': move, 'nodes': [node1, node2]}
+
+			elif move == 'educate':
+				node1 = int(input("Node 1: "))
+				if node1 not in list(G.nodes):
+					print(f"{node1} is not a valid node")
+					continue
+				
+				node2 = int(input("Node 2: "))
+				if node2 not in list(G.nodes):
+					print(f"{node2} is not a valid node")
+					continue
+
+				node3 = int(input("Node 3: "))
+				if node3 not in list(G.nodes):
+					print(f"{node3} is not a valid node")
+					continue
+
+				return {'move': move, 'nodes': [node1, node2, node3]}
+			
+			elif move == 'gray':
+				return {'move': move}
+
+		
+		print("------ Your turn has ended -------")
+
+	def get_summary(self) -> dict:
+		return "This is the user agent..."
+
+	def get_grey_agent(self):
+		return UserBlueAgent()
+
 
 class RandomBlueAgent(Agent):
 	#
