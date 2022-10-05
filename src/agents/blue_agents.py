@@ -2,6 +2,7 @@
 from random import randint, sample
 import networkx as nx
 from numpy.random import binomial
+from math import inf
 
 from src.constants import BLUE_TEAM_EDUCATE_AMOUNT
 from .abstract_agent import Agent
@@ -48,14 +49,58 @@ class RandomBlueAgent(Agent):
 
 class SmartBlueAgent(Agent):
 	#
-	#	A completely random agent
+	#	A smart blue agent
 	#
-	def initialize(self, energy: float = 1.0, is_gray: bool = False):
+	def initialize(self, energy: float = 1.0, is_gray: bool = False, score_edu_redweights: float = 1.0, score_edu_edges: float = 1.0, score_edu_unc: float = 1.0):
+		self.score_edu_redweights = score_edu_redweights
+		self.score_edu_edges = score_edu_edges
+		self.score_edu_unc = score_edu_unc
 		return super().initialize(energy, is_gray)
 		
-	def update(self, G: nx.Graph, weights: list):
+	def update(self, G: nx.Graph, weights: list, oppweights: list):
+		# Scores the two moves and returns the move with the highest score
+		def score(G: nx.Graph, moves: list, weights: list, oppweights: list, willvotes: dict, con_nodes: list, edu_nodes: list):
+			
+			return 1
+
+
+		willvotes = nx.get_node_attributes(G, 'willvote')
+		uncertainties = nx.get_node_attributes(G, 'uncertainty')
+
+		# Node finding for connect
+		node1 = None
+		node2 = None
+		n1_uncertainty = -inf
+		n2_uncertainty = inf
+	
+		for i in G.nodes():
+			if not willvotes[i] and uncertainties[i] > n1_uncertainty:	# Weakest red team
+				node1 = i
+				n1_uncertainty = nx.get_node_attributes(G.node(i), 'uncertainty')
+			elif willvotes[i] and uncertainties[i] < n2_uncertainty:	# Strongest blue team 
+				node2 = i
+				n2_uncertainty = nx.get_node_attributes(G.node(i), 'uncertainty')
+		
+		con_nodes = [node1, node2]
+
+		edu_nodes = []
+		
+		# Creates a list with each nodes total weight to neighbours and their node num to sort
+		node_weights = []
+		for i in G.nodes():		# for each node
+			if not willvotes[i]:	# Only counts node if it holds the opinion not to vote
+				node_weights.append([G.degree(i, 'weight'), i])
+
+		# Gets the nodes with the highest edge weights
+		node_weights.sort()
+		best_weights = node_weights[-BLUE_TEAM_EDUCATE_AMOUNT:]
+		for i in best_weights:
+			edu_nodes.append(i[1])
+
+
+
 		if self.energy > 0.1:
-			move = 'connect' if binomial(1, 0.5) else 'educate'
+			move = score(G, ['connect', 'educate'], weights, oppweights, willvotes, con_nodes, edu_nodes)
 			
 			if move == 'connect':
 				# Generating node 1 and 2
@@ -70,21 +115,6 @@ class SmartBlueAgent(Agent):
 				return {'move': move, 'nodes': [node1, node2]}
 			else:
 				willvotes = nx.get_node_attributes(G, 'willvote')
-				node_weights = []
-
-				for i in G.nodes():		# for each node
-					node_weight = 0
-					for j in G.edges(i, data="weight"):		# Gets the edge weights for the node
-						node_weight += j[2]
-					if not willvotes[i]:	# Only counts node if it holds the opinion not to vote
-						node_weights.append([node_weight, i])
-
-				# Gets the nodes with the highest edge weights
-				node_weights.sort()
-				best_weights = node_weights[-BLUE_TEAM_EDUCATE_AMOUNT:]
-				nodes = []
-				for i in best_weights:
-					nodes.append(i[1])
 
 				# Returning move
 				return {'move': move, 'nodes': nodes}
