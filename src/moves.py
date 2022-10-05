@@ -85,7 +85,7 @@ def propaganda(G: nx.Graph, red_agent: Agent, red_weights: list, potency: int, u
 
 # ----- Blue Team Moves ----- #
 
-# Educates a node, causing it to be certain to vote and removes connection to red
+# Educates some nodes, causing it to be certain to vote and removes connection to red
 def educate(G: nx.Graph, blue_agent: Agent, uncertainty_int: list, nodes: list, red_weights: list) -> nx.Graph:
 	# Check blue team has enough energy
 	if blue_agent.energy < -EDUCATE_COST:

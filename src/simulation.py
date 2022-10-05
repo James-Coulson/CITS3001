@@ -16,14 +16,14 @@ import matplotlib.pyplot as plt
 from .constants import *
 from .plotting.graph_plotting import plot_graph
 from .agents.abstract_agent import Agent
-from .agents.blue_agents import RandomBlueAgent
-from .agents.red_agents import RandomRedAgent
+from .agents.blue_agents import RandomBlueAgent, SmartBlueAgent
+from .agents.red_agents import RandomRedAgent, SmartRedAgent
 from .moves import *
 from .utility import clamp
 
 # ----- Simulation Methods ----- #
 
-def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent: Agent = RandomRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
+def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent: Agent = SmartRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
 				   colortype = MAP_TEAMS, print_summary: bool = False, plot_statistics: bool = False, verbose: bool = False):
 	"""
 	Runs the simulation on a given graph
@@ -70,9 +70,9 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		# ---------------- Player moves ---------------- #
 		# Getting player moves
 		if player_to_move == RED:
-			move = red_agent.update(G, red_weights)
+			move = red_agent.update(G, red_weights, blue_weights)
 		elif player_to_move == BLUE:
-			move = blue_agent.update(G, blue_weights)
+			move = blue_agent.update(G, blue_weights, red_weights)
 		else:
 			raise ValueError(f"Invalid player to move value. value:{player_to_move}")
 		
@@ -97,7 +97,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 				grey_agent.initialize(is_gray = True)
 				
 				# Getting move and interpreting move
-				move = grey_agent.update(G, red_weights if red else blue_weights)
+				move = grey_agent.update(G, red_weights if red else blue_weights, blue_weights if red else red_weights)
 				print(f"Created a grey agent that was red: {red}")
 				if move['move'] == 'kill':
 					G, energy = kill(G, grey_agent, move['node'], blue_weights, red_weights)
