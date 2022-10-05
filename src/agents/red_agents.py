@@ -61,12 +61,13 @@ class RandomRedAgent(Agent):
 	#
 	#	A completely random agent
 	#
-	def initialize(self, energy: float = 1.0, is_gray: bool = False):
+	def initialize(self, energy: float = 1.0, is_gray: bool = False, move_prob: float = 0.3):
+		self.move_prob = move_prob
 		return super().initialize(energy, is_gray)
 		
 	def update(self, G: nx.Graph, weights: list):
 		if self.energy > 0.1:
-			move = 'kill' if binomial(1, 0.3) and len(G.nodes()) > 30 else 'propaganda'
+			move = 'kill' if binomial(1, self.move_prob) and len(G.nodes()) > 30 else 'propaganda'
 			# Chooses the node with the highest total weight of it's edges and will vote to kill
 			if move == 'kill':
 				node = list(G.nodes)[randint(0, len(G.nodes()) - 1)]

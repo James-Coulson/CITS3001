@@ -53,8 +53,10 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 	player_to_move = RED
 
 	# Calling intialize for both agents
-	blue_agent.initialize()
-	red_agent.initialize()
+	if not hasattr(blue_agent, 'energy'):
+		blue_agent.initialize()
+	if not hasattr(red_agent, 'energy'):
+		red_agent.initialize()
 
 	# Defining statistics variables
 	stats = {"time": list(), "uncertainty_avg_up_stdev": list(), "uncertainty_avg": list(), "uncertainty_avg_down_stdev": list(),
@@ -98,7 +100,10 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 				
 				# Getting move and interpreting move
 				move = grey_agent.update(G, red_weights if red else blue_weights)
-				print(f"Created a grey agent that was red: {red}")
+				
+				if verbose:
+					print(f"Created a grey agent that was red: {red}")
+
 				if move['move'] == 'kill':
 					G, energy = kill(G, grey_agent, move['node'], blue_weights, red_weights)
 				elif move['move'] == 'propaganda':
@@ -190,7 +195,8 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 			plot_graph(G, uncertainty_int, pos=pos, block=False, colortype = colortype)
 
 	# Printing simulation ended
-	print("Simulation ended")
+	if verbose:
+		print("Simulation ended")
 	plt.show()
 
 	# Plotting statistics
@@ -222,4 +228,4 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent
 		plt.legend()
 		plt.show()
 
-	return G
+	return G, stats
