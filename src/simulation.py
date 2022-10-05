@@ -23,7 +23,7 @@ from .utility import clamp
 
 # ----- Simulation Methods ----- #
 
-def run_simulation(G: nx.Graph, blue_agent: Agent = RandomBlueAgent(), red_agent: Agent = SmartRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
+def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent: Agent = SmartRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
 				   colortype = MAP_TEAMS, print_summary: bool = False, plot_statistics: bool = False, verbose: bool = False):
 	"""
 	Runs the simulation on a given graph

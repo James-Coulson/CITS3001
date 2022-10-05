@@ -49,7 +49,7 @@ class SmartRedAgent(Agent):
 	
 	
 
-	def update(self, G: nx.Graph, weights: list):
+	def update(self, G: nx.Graph, weights: list, oppweights: list):
 
 		# Scores the moves against eachother and decides the optimum move
 		def score(self, G: nx.Graph, weights: list, moves: list, willvotes: dict, potency: int, node: int):
@@ -58,7 +58,7 @@ class SmartRedAgent(Agent):
 
 			# Scoring Kill move
 			moves_scores['kill'] -= RED_TEAM_FOLLOWER_LOSS_PROB * self.score_kill_loss
-			moves_scores['kill'] += G.degree(node, "weights") * self.score_kill_weights
+			moves_scores['kill'] += G.degree(node, "weight") * self.score_kill_weights
 			moves_scores['kill'] -= len(G.nodes()) * self.score_kill_numnodes
 
 			# Scoring Propaganda move

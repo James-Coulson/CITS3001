@@ -15,7 +15,7 @@ class RandomBlueAgent(Agent):
 	def initialize(self, energy: float = 1.0, is_gray: bool = False):
 		return super().initialize(energy, is_gray)
 		
-	def update(self, G: nx.Graph, weights: list):
+	def update(self, G: nx.Graph, weights: list, oppweights: list):
 		if self.energy > 0.3:
 			move = 'connect' if binomial(1, 0.5) else 'educate'
 			
@@ -51,37 +51,52 @@ class SmartBlueAgent(Agent):
 	#
 	#	A smart blue agent
 	#
-	def initialize(self, energy: float = 1.0, is_gray: bool = False, score_edu_redweights: float = 1.0, score_edu_edges: float = 1.0, score_edu_unc: float = 1.0):
+	def initialize(self, energy: float = 1.0, is_gray: bool = False, score_edu_redweights: float = 1.0, score_edu_edges: float = 1.0, score_edu_unc: float = 1.0,
+	score_con_dist: float = 1.0, score_con_weight: float = 1.0):
 		self.score_edu_redweights = score_edu_redweights
 		self.score_edu_edges = score_edu_edges
 		self.score_edu_unc = score_edu_unc
+		self.score_con_dist = score_con_dist
+		self.score_con_weight = score_con_weight
 		return super().initialize(energy, is_gray)
 		
 	def update(self, G: nx.Graph, weights: list, oppweights: list):
 		# Scores the two moves and returns the move with the highest score
-		def score(G: nx.Graph, moves: list, weights: list, oppweights: list, willvotes: dict, con_nodes: list, edu_nodes: list):
-			
-			return 1
+		def score(G: nx.Graph, moves: list, weights: list, oppweights: list, willvotes: dict, uncertainties: dict, con_nodes: list, edu_nodes: list):
+			# Holds the current score for each move
+			moves_scores = dict.fromkeys(moves, 0.0)
 
+			# Scoring educate move
+			for i in edu_nodes:
+				moves_scores['educate'] += oppweights[i] * self.score_edu_redweights
+				moves_scores['educate'] += G.degree(i, 'weight') * self.score_edu_edges
+				moves_scores['educate'] += uncertainties[i] * self.score_edu_unc
+			
+
+			# Scoring Propaganda move
+			moves_scores['connect'] += nx.shortest_path_length(G, con_nodes[0], con_nodes[1]) * self.score_con_dist
+			moves_scores['connect'] += G.degree(con_nodes[1], 'weight') * self.score_con_weight
+
+			return max(moves_scores, key=moves_scores.get)
 
 		willvotes = nx.get_node_attributes(G, 'willvote')
 		uncertainties = nx.get_node_attributes(G, 'uncertainty')
 
 		# Node finding for connect
-		node1 = None
-		node2 = None
+		rednode = None
+		bluenode = None
 		n1_uncertainty = -inf
 		n2_uncertainty = inf
 	
 		for i in G.nodes():
 			if not willvotes[i] and uncertainties[i] > n1_uncertainty:	# Weakest red team
-				node1 = i
-				n1_uncertainty = nx.get_node_attributes(G.node(i), 'uncertainty')
+				rednode = i
+				n1_uncertainty = uncertainties[i]
 			elif willvotes[i] and uncertainties[i] < n2_uncertainty:	# Strongest blue team 
-				node2 = i
-				n2_uncertainty = nx.get_node_attributes(G.node(i), 'uncertainty')
-		
-		con_nodes = [node1, node2]
+				bluenode = i
+				n2_uncertainty = uncertainties[i]
+
+		con_nodes = [bluenode, rednode]
 
 		edu_nodes = []
 		
@@ -97,27 +112,17 @@ class SmartBlueAgent(Agent):
 		for i in best_weights:
 			edu_nodes.append(i[1])
 
-
-
 		if self.energy > 0.1:
-			move = score(G, ['connect', 'educate'], weights, oppweights, willvotes, con_nodes, edu_nodes)
+			move = score(G, ['connect', 'educate'], weights, oppweights, willvotes, uncertainties, con_nodes, edu_nodes)
 			
 			if move == 'connect':
-				# Generating node 1 and 2
-				node1 = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
-				node2 = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
 				
-				# Ensuring node 1 and node 2 are not the same
-				while node2 == node1:
-					node2 = list(G.nodes)[randint(0, len(G.nodes()) - 1)]
-				
-				# Returning moce
-				return {'move': move, 'nodes': [node1, node2]}
+				# Returning move
+				return {'move': move, 'nodes': con_nodes}
 			else:
-				willvotes = nx.get_node_attributes(G, 'willvote')
 
 				# Returning move
-				return {'move': move, 'nodes': nodes}
+				return {'move': move, 'nodes': edu_nodes}
 
 		return {'move': None}
 
