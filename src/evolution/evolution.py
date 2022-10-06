@@ -92,7 +92,7 @@ def evolution(training_agent: type, params: list, param_bounds: dict, agent_is_r
 			parent = choice(list(top_agents.keys()))
 
 			# Getting parameters of parent
-			child_params = pop[parent]
+			child_params = deepcopy(pop[parent])
 
 			# Mutating parent params
 			for key in child_params.keys():
@@ -111,4 +111,5 @@ def evolution(training_agent: type, params: list, param_bounds: dict, agent_is_r
 		pop = new_pop
 			
 
-evolution(RandomRedAgent, params=['move_prob'], param_bounds={'move_prob': [0, 1]}, plot=True, verbose=True)
+evolution(RandomRedAgent, plot=True, verbose=True, params=['move_prob'], param_bounds={'move_prob': [0, 1]})
+# evolution(SmartRedAgent, params=['score_kill_loss', 'score_kill_weights', 'score_kill_numnodes', 'score_prop_vote', 'score_prop_weights', 'score_prop_loss', 'score_prop_potency'], param_bounds={'score_kill_loss': [0, 1], 'score_kill_weights': [0, 1], 'score_kill_numnodes': [0, 1], 'score_prop_vote': [0, 1], 'score_prop_weights': [0, 1], 'score_prop_loss': [0, 1], 'score_prop_potency': [0, 1]}, plot=False, verbose=True)
