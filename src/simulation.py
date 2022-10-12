@@ -53,8 +53,10 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 	player_to_move = RED
 
 	# Calling intialize for both agents
-	blue_agent.initialize()
-	red_agent.initialize()
+	if not hasattr(blue_agent, 'energy'):
+		blue_agent.initialize()
+	if not hasattr(red_agent, 'energy'):
+		red_agent.initialize()
 
 	# Defining statistics variables
 	stats = {"time": list(), "uncertainty_avg_up_stdev": list(), "uncertainty_avg": list(), "uncertainty_avg_down_stdev": list(),
@@ -97,14 +99,17 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 				grey_agent.initialize(is_gray = True)
 				
 				# Getting move and interpreting move
-				move = grey_agent.update(G, red_weights if red else blue_weights, blue_weights if red else red_weights)
-				print(f"Created a grey agent that was red: {red}")
+				move = grey_agent.update(G, red_weights if red else blue_weights)
+				
+				if verbose:
+					print(f"Created a grey agent that was red: {red}")
+
 				if move['move'] == 'kill':
 					G, energy = kill(G, grey_agent, move['node'], blue_weights, red_weights)
 				elif move['move'] == 'propaganda':
 					G, energy = propaganda(G, grey_agent, red_weights, move['potency'], uncertainty_int)
 				if move['move'] == 'educate':
-					G, energy = educate(G, grey_agent, uncertainty_int, move['node'], red_weights)
+					G, energy = educate(G, grey_agent, uncertainty_int, move['nodes'], red_weights)
 				elif move['move'] == 'connect':
 					G, energy = connect(G, grey_agent, move['nodes'])		# ! Please note it uses a list of 2 nodes, thus the key 'nodes' instead of 'node'
 		else:
@@ -190,7 +195,8 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 			plot_graph(G, uncertainty_int, pos=pos, block=False, colortype = colortype)
 
 	# Printing simulation ended
-	print("Simulation ended")
+	if verbose:
+		print("Simulation ended")
 	plt.show()
 
 	# Plotting statistics
@@ -222,4 +228,4 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 		plt.legend()
 		plt.show()
 
-	return G
+	return G, stats
