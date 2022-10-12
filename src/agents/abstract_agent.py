@@ -28,7 +28,7 @@ class Agent(ABC):
 		pass
 
 	@abstractmethod
-	def update(self, G: nx.Graph, weights: list):
+	def update(self, G: nx.Graph, weights: list, oppweights: list):
 		"""
 		The update function is called at every time interval of teh simulation and is used to get
 		the moves that the agent wants to perform in it's current move.
