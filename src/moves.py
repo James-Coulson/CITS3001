@@ -13,6 +13,7 @@ from .agents.abstract_agent import Agent
 
 # Local imports
 from .constants import *
+from .utility import clamp
 
 # TODO: Have energy of the agent be checked and reduced when a move occurs
 
@@ -69,10 +70,7 @@ def propaganda(G: nx.Graph, red_agent: Agent, red_weights: list, potency: int, u
 		# 	uncertainties[i] -= (potency * RED_TEAM_POTENCY_CHANGE) * red_weights[i] * 0.3
 		
 		# Ensures the uncertainty is kept within the allowed range
-		if uncertainties[i] < uncertainty_int[0]:
-			uncertainties[i] = uncertainty_int[0]
-		elif uncertainties[i] > uncertainty_int[1]:
-			uncertainties[i] = uncertainty_int[1]
+		uncertainties[i] = clamp(uncertainties[i], uncertainty_int[0], uncertainty_int[1])
 		
 	# Setting new uncertainties and willvotes
 	nx.set_node_attributes(G, uncertainties, 'uncertainty')
