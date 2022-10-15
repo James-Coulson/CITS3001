@@ -31,13 +31,13 @@ class Agent(ABC):
 	@abstractmethod
 	def update(self, G: nx.Graph, weights: list, oppweights: list):
 		"""
-		The update function is called at every time interval of teh simulation and is used to get
-		the moves that the agent wants to perform in it's current move.
+		The update function is called at every time interval of the simulation and is used to get
+		the moves that the agent wants to perform in its current move.
 
 		Parameters:
 			G: The current graph
 			weights: The current weights of the Agent to each of the nodes in the graph.
-			oppweights: The current weights of the oppossing Agent to each of the nodes in the graph.
+			oppweights: The current weights of the opposing Agent to each of the nodes in the graph.
 
 		Returns:
 			When called the function returns what move the agent wants to perform during its turn.
