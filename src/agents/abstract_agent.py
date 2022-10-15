@@ -21,6 +21,7 @@ class Agent(ABC):
 
 		Parameters:
 			energy: Energy represents the maximum energy a team can have and should be a value between 0 and 1. (default: 1)
+			is_gray: Whether the agent is a gray agent or not.
 		"""
 		self.energy = energy
 		self.max_energy = energy
@@ -36,6 +37,7 @@ class Agent(ABC):
 		Parameters:
 			G: The current graph
 			weights: The current weights of the Agent to each of the nodes in the graph.
+			oppweights: The current weights of the oppossing Agent to each of the nodes in the graph.
 
 		Returns:
 			When called the function returns what move the agent wants to perform during its turn.
