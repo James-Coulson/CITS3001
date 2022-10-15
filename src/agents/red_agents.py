@@ -13,7 +13,7 @@ class UserRedAgent(Agent):
 	def initialize(self, energy: float = 1.0, is_gray: bool = False):
 		return super().initialize(energy, is_gray)
 		
-	def update(self, G: nx.Graph, weights: list):
+	def update(self, G: nx.Graph, weights: list, oppweights: list):
 		# Printing agent summary
 		print(f"------ It's your turn (Red) -------")
 		if self.is_gray: print("     !! This is the gray agent !!")
