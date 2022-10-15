@@ -145,6 +145,8 @@ class SmartBlueAgent(Agent):
 			
 
 			# Scoring Propaganda move
+			if con_nodes[0] is None or con_nodes[1] is None:
+				return 'educate'
 			moves_scores['connect'] += nx.shortest_path_length(G, con_nodes[0], con_nodes[1]) * self.score_con_dist
 			moves_scores['connect'] += G.degree(con_nodes[1], 'weight') * self.score_con_weight
 
