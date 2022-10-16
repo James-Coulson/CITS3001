@@ -13,6 +13,8 @@ from numpy import mean
 from multiprocessing.connection import wait
 from threading import active_count
 import matplotlib.pyplot as plt
+from json import dumps
+from time import process_time
 
 # # For Erdos-Renyi graph generation
 # type_ = ERDOS_RENYI
@@ -27,6 +29,14 @@ uncertainty_int = [-0.5, 1.0]
 
 def evolution(training_agent: type, params: list, param_bounds: dict, agent_is_red: bool = True, pop_size: int = 50, num_gens: int = 20, sim_time_steps: int = 100,
 			  plot: bool = False, verbose: bool = False):
+	# Dictionary to store the parameters and utilities of agents for each generation
+	training_results = dict()
+	
+	# File name to store training results
+	# now = datetime.now()
+	# time = now.strftime("%d/%m/%Y-%H-%M-%S")
+	filename = f"training-results-{process_time()}.json"#f"Training_Results-{time}.txt"
+
 	# Generating inital random population
 	pop = dict()
 	for i in range(pop_size):
@@ -64,11 +74,17 @@ def evolution(training_agent: type, params: list, param_bounds: dict, agent_is_r
 
 		# Get top third of population
 		top_agents = dict()
+		training_results[i] = dict()
 		for agent in list(res.keys())[-int(pop_size * 0.1):]:
 			top_agents[agent] = pop[agent]
+			training_results[i][res[agent]] = pop[agent]
 
 		if verbose:
 			print(str(list(res.values())[-int(pop_size * 0.1):]))
+
+		# Saving parameters to file
+		with open(filename, 'w') as file:
+			file.write(dumps(training_results))
 
 		# Defining new population dict
 		new_pop = dict()
@@ -111,5 +127,5 @@ def evolution(training_agent: type, params: list, param_bounds: dict, agent_is_r
 		pop = new_pop
 			
 
-evolution(RandomRedAgent, plot=True, verbose=True, params=['move_prob'], param_bounds={'move_prob': [0, 1]})
-# evolution(SmartRedAgent, params=['score_kill_loss', 'score_kill_weights', 'score_kill_numnodes', 'score_prop_vote', 'score_prop_weights', 'score_prop_loss', 'score_prop_potency'], param_bounds={'score_kill_loss': [0, 1], 'score_kill_weights': [0, 1], 'score_kill_numnodes': [0, 1], 'score_prop_vote': [0, 1], 'score_prop_weights': [0, 1], 'score_prop_loss': [0, 1], 'score_prop_potency': [0, 1]}, plot=False, verbose=True)
+# evolution(RandomRedAgent, plot=True, verbose=True, params=['move_prob'], param_bounds={'move_prob': [0, 1]})
+evolution(SmartRedAgent, params=['score_kill_loss', 'score_kill_weights', 'score_kill_numnodes', 'score_prop_vote', 'score_prop_weights', 'score_prop_loss', 'score_prop_potency'], param_bounds={'score_kill_loss': [0, 1], 'score_kill_weights': [0, 1], 'score_kill_numnodes': [0, 1], 'score_prop_vote': [0, 1], 'score_prop_weights': [0, 1], 'score_prop_loss': [0, 1], 'score_prop_potency': [0, 1]}, plot=False, verbose=True)

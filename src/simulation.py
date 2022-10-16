@@ -5,12 +5,14 @@
 # ----- Imports ----- #
 
 # Expernal imports
+from concurrent.futures import process
 from decimal import MAX_EMAX
 import random as rd
 from numpy.random import binomial
 import networkx as nx
 from statistics import mean, stdev
 import matplotlib.pyplot as plt
+from time import process_time
 
 # Local imports
 from .constants import *
@@ -63,12 +65,16 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 			 "willvote_prop": list(), "blue_energy": list(), "red_energy": list()}
 
 	# Red and Blue agent weights
-	# TODO: Better calculation of weights, add more chance to not have connection
 	red_weights = [rd.uniform(0,1)] * len(G.nodes())
 	blue_weights = [rd.uniform(0,1)] * len(G.nodes())
 
 	# Perform simulation
 	for t in range(max_time):
+		# ----------------  Time Per Turn ---------------- #
+
+		if verbose:
+			time = process_time()
+
 		# ---------------- Player moves ---------------- #
 		# Getting player moves
 		if player_to_move == RED:
@@ -99,7 +105,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 				grey_agent.initialize(is_gray = True)
 				
 				# Getting move and interpreting move
-				move = grey_agent.update(G, red_weights if red else blue_weights)
+				move = grey_agent.update(G, red_weights if red else blue_weights, blue_weights if red else red_weights)
 				
 				if verbose:
 					print(f"Created a grey agent that was red: {red}")
@@ -193,6 +199,12 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 		# Call plot_graph
 		if plot_frequency is not None and t % plot_frequency == 0:
 			plot_graph(G, uncertainty_int, pos=pos, block=False, colortype = colortype)
+
+		# ---------------- Time Per Turn ---------------- #
+
+		if verbose:
+			time = process_time() - time 
+			print(f"Time taken for turn = {time}")
 
 	# Printing simulation ended
 	if verbose:
