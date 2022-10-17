@@ -67,7 +67,7 @@ def propaganda(G: nx.Graph, red_agent: Agent, red_weights: list, potency: int, u
 			uncertainties[i] += (potency * RED_TEAM_POTENCY_CHANGE) * red_weights[i]
 		# If node will not vote, decreases uncertainty
 		elif not willvotes[i]:
-			uncertainties[i] -= (potency * RED_TEAM_POTENCY_CHANGE) * red_weights[i] * 0.25
+			uncertainties[i] -= (potency * RED_TEAM_POTENCY_CHANGE) * red_weights[i] * 0.3
 		
 		# Ensures the uncertainty is kept within the allowed range
 		uncertainties[i] = clamp(uncertainties[i], uncertainty_int[0], uncertainty_int[1])
