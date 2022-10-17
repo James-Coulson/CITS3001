@@ -62,14 +62,15 @@ def plot_graph(G: nx.Graph, uncertainty_int: list, layout_function: Callable = n
 
 	uncertainties = nx.get_node_attributes(G, "uncertainty")
 	willvotes = nx.get_node_attributes(G, "willvote")
+	nodenums = nx.get_node_attributes(G, "")
 
 	if plot_labels:
 		labels = dict()
 		for node in G.nodes:
 			if colortype == MAP_WILLVOTE:
-				labels[node] = f"{uncertainties[node]: .2f}"
+				labels[node] = f"{node}\n{uncertainties[node]: .2f}"
 			else:
-				labels[node] = f"{uncertainties[node]: .2f}\n{willvotes[node]}"
+				labels[node] = f"{node}\n{uncertainties[node]: .2f}\n{willvotes[node]}"
 		nx.draw_networkx_labels(G, pos, labels=labels)
 
 	# Blocking
