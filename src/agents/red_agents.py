@@ -107,6 +107,10 @@ class SmartRedAgent(Agent):
 
 		# Scores the moves against eachother and decides the optimum move
 		def score(self, G: nx.Graph, weights: list, moves: list, willvotes: dict, potency: int, node: int):
+			# Checking for node is None
+			if node is None:
+				return "propoganda"
+			
 			# Holds the current score for each move
 			moves_scores = dict.fromkeys(moves, 0.0)
 

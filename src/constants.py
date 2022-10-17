@@ -24,7 +24,7 @@ dt = 0.05			# Time increments
 RED = 0									# Red team identifier
 BLUE = 1								# Blue team identifier
 RED_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for red team
-BLUE_TEAM_ENERGY_RECOV_RATE = 0.1		# Rate of energy recovery for blue team
+BLUE_TEAM_ENERGY_RECOV_RATE = 0.15		# Rate of energy recovery for blue team
 RED_TEAM_WEIGHT_RECOV_RATE = 0.1		# Rate of red edge weights recovery
 
 # ----- Moves Constants ----- #

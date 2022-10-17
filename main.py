@@ -22,16 +22,70 @@ type_ = BARABASI_ALBERT
 new_edges = 4
 
 # Defining uncertainty interval
-uncertainty_int = [-0.5, 1.0]
+uncertainty_int = [-1, 1]
 
 # Generate graph
-G = generate_graph(100, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
+G = generate_graph(num_green, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
 
 # Plot initial graph
 plot_graph(G, uncertainty_int, colortype = MAP_WILLVOTE)
 
 # Runs simulation
-run_simulation(G, max_time = 300, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=UserRedAgent(), blue_agent=SmartBlueAgent())
+# run_simulation(G, max_time = 300, verbose=True, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=RandomRedAgent(), blue_agent=SmartBlueAgent())
+
+
+# # ------------------ Trained Smart Red Agent vs Random Blue Agent ------------------ #
+# red = SmartRedAgent()
+# red.initialize(**{
+# 			"score_kill_loss": 0,
+# 			"score_kill_weights": 0.8254243013257517,
+# 			"score_kill_numnodes": 0,
+# 			"score_prop_vote": 0.23159485544034947,
+# 			"score_prop_weights": 0.005033958841327069,
+# 			"score_prop_loss": 0.7820928399402409,
+# 			"score_prop_potency": 1
+# 		})
+
+# run_simulation(G, max_time = 300, verbose=True, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=red, blue_agent=RandomBlueAgent())
+
+
+# # ------------------ Trained Smart Blue Agent vs Random Red Agent ------------------ #
+# blue = SmartBlueAgent()
+# blue.initialize(**{
+# 			"score_edu_redweights": 1,
+# 			"score_edu_edges": 1,
+# 			"score_edu_unc": 0.0703925524875619,
+# 			"score_con_dist": 1,
+# 			"score_con_weight": -1
+# 		})
+
+# run_simulation(G, max_time = 300, verbose=True, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=RandomRedAgent(), blue_agent=blue)
+
+
+# ------------------ Trained Smart Blue Agent vs Trained Smart Red Agent ------------------ #
+blue = SmartBlueAgent()
+blue.initialize(**{
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": 0.0703925524875619,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		})
+
+red = SmartRedAgent()
+red.initialize(**{
+			"score_kill_loss": 0,
+			"score_kill_weights": 0.8254243013257517,
+			"score_kill_numnodes": 0,
+			"score_prop_vote": 0.23159485544034947,
+			"score_prop_weights": 0.005033958841327069,
+			"score_prop_loss": 0.7820928399402409,
+			"score_prop_potency": 1
+		})
+
+run_simulation(G, max_time = 300, verbose=True, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=red, blue_agent=blue)
+
+
 
 # Plot final graph
 plot_graph(G, uncertainty_int, colortype=MAP_WILLVOTE)

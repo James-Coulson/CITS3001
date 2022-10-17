@@ -123,7 +123,7 @@ class SmartBlueAgent(Agent):
 	#	A smart blue agent
 	#
 	def initialize(self, energy: float = 1.0, is_gray: bool = False, score_edu_redweights: float = 1.0, score_edu_edges: float = 1.0, score_edu_unc: float = 1.0,
-	score_con_dist: float = 1.0, score_con_weight: float = 1.0):
+					score_con_dist: float = 1.0, score_con_weight: float = 1.0):
 		self.score_edu_redweights = score_edu_redweights
 		self.score_edu_edges = score_edu_edges
 		self.score_edu_unc = score_edu_unc

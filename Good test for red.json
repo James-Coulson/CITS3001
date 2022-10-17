@@ -1,0 +1,143 @@
+{
+	"0": {
+		"0.6599999999999999": {
+			"score_kill_loss": 0.5262753958990806,
+			"score_kill_weights": 0.7056139358844872,
+			"score_kill_numnodes": 0.23417614908057993,
+			"score_prop_vote": 0.8372754842813293,
+			"score_prop_weights": 0.34392112617803827,
+			"score_prop_loss": 0.6492902379885934,
+			"score_prop_potency": 0.5390040230424186
+		},
+		"0.6699999999999999": {
+			"score_kill_loss": 0.13668844661223079,
+			"score_kill_weights": 0.3439600828388242,
+			"score_kill_numnodes": 0.36257214342802957,
+			"score_prop_vote": 0.7741984087514011,
+			"score_prop_weights": 0.48842450642961865,
+			"score_prop_loss": 0.802233982192934,
+			"score_prop_potency": 0.36354300729380074
+		},
+		"0.6783919597989949": {
+			"score_kill_loss": 0.7778003229561175,
+			"score_kill_weights": 0.21003307228714096,
+			"score_kill_numnodes": 0.04599204732055484,
+			"score_prop_vote": 0.1998114662170476,
+			"score_prop_weights": 0.13429995437099673,
+			"score_prop_loss": 0.7109476255633711,
+			"score_prop_potency": 0.5806378809354195
+		},
+		"0.685": {
+			"score_kill_loss": 0.3828853892221822,
+			"score_kill_weights": 0.6194128940456847,
+			"score_kill_numnodes": 0.2602503023018744,
+			"score_prop_vote": 0.8863378407273664,
+			"score_prop_weights": 0.18463364329154475,
+			"score_prop_loss": 0.5271473402213495,
+			"score_prop_potency": 0.3780805726963471
+		},
+		"0.69": {
+			"score_kill_loss": 0.1025458141311425,
+			"score_kill_weights": 0.9822847654240547,
+			"score_kill_numnodes": 0.7317773258630673,
+			"score_prop_vote": 0.9256772505484815,
+			"score_prop_weights": 0.22210394018483715,
+			"score_prop_loss": 0.8256503638648359,
+			"score_prop_potency": 0.6129501476102448
+		}
+	},
+	"1": {
+		"0.6599999999999999": {
+			"score_kill_loss": 0,
+			"score_kill_weights": 1,
+			"score_kill_numnodes": 1,
+			"score_prop_vote": 0.8032722031188768,
+			"score_prop_weights": 1,
+			"score_prop_loss": 0.49639341510396834,
+			"score_prop_potency": 0.6221010231064046
+		},
+		"0.665": {
+			"score_kill_loss": 1,
+			"score_kill_weights": 0.05917660379075074,
+			"score_kill_numnodes": 0.21352431500192032,
+			"score_prop_vote": 0.4963257089175013,
+			"score_prop_weights": 0,
+			"score_prop_loss": 0.27234529453305767,
+			"score_prop_potency": 0.8892445000830695
+		},
+		"0.6699999999999999": {
+			"score_kill_loss": 0,
+			"score_kill_weights": 0.7720096652966173,
+			"score_kill_numnodes": 0,
+			"score_prop_vote": 0,
+			"score_prop_weights": 1,
+			"score_prop_loss": 0.2306098590247589,
+			"score_prop_potency": 0.6600669005779614
+		},
+		"0.675": {
+			"score_kill_loss": 0.5498095355671097,
+			"score_kill_weights": 0.41740890897721666,
+			"score_kill_numnodes": 0.21334287452966377,
+			"score_prop_vote": 0,
+			"score_prop_weights": 1,
+			"score_prop_loss": 0.014868409888386003,
+			"score_prop_potency": 1
+		},
+		"0.7864583333333334": {
+			"score_kill_loss": 0,
+			"score_kill_weights": 1,
+			"score_kill_numnodes": 0.05816614588659283,
+			"score_prop_vote": 0,
+			"score_prop_weights": 0,
+			"score_prop_loss": 0.5414074928735766,
+			"score_prop_potency": 0
+		}
+	},
+	"2": {
+		"0.645": {
+			"score_kill_loss": 0,
+			"score_kill_weights": 1,
+			"score_kill_numnodes": 0,
+			"score_prop_vote": 0,
+			"score_prop_weights": 1,
+			"score_prop_loss": 1,
+			"score_prop_potency": 0.34704592564907527
+		},
+		"0.655": {
+			"score_kill_loss": 1,
+			"score_kill_weights": 1,
+			"score_kill_numnodes": 0.6971680268804905,
+			"score_prop_vote": 0.39467973141693197,
+			"score_prop_weights": 1,
+			"score_prop_loss": 0.3681834620227747,
+			"score_prop_potency": 0.24413622073134755
+		},
+		"0.6582914572864322": {
+			"score_kill_loss": 0,
+			"score_kill_weights": 1,
+			"score_kill_numnodes": 0,
+			"score_prop_vote": 0,
+			"score_prop_weights": 1,
+			"score_prop_loss": 0.1645666343991717,
+			"score_prop_potency": 0.8502577396577755
+		},
+		"0.7653061224489796": {
+			"score_kill_loss": 0,
+			"score_kill_weights": 1,
+			"score_kill_numnodes": 0,
+			"score_prop_vote": 0.6231279232544416,
+			"score_prop_weights": 0.039618511915064714,
+			"score_prop_loss": 0,
+			"score_prop_potency": 0.16163431417247814
+		},
+		"0.7947368421052632": {
+			"score_kill_loss": 0,
+			"score_kill_weights": 0.8254243013257517,
+			"score_kill_numnodes": 0,
+			"score_prop_vote": 0.23159485544034947,
+			"score_prop_weights": 0.005033958841327069,
+			"score_prop_loss": 0.7820928399402409,
+			"score_prop_potency": 1
+		}
+	}
+}
