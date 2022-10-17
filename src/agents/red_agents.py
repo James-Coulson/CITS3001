@@ -90,8 +90,8 @@ class SmartRedAgent(Agent):
 	#
 	#	A Smart Agent
 	#
-	def initialize(self, energy: float = 1.0, is_gray: bool = False, score_kill_loss: float = 1.0, score_kill_weights: float = 1.0, score_kill_numnodes: float = 1.0, 
-	score_prop_vote: float = 1.0, score_prop_weights: float = 1.0, score_prop_loss: float = 1.0, score_prop_potency: float = 1.0):
+	def initialize(self, energy: float = 1.0, is_gray: bool = False, score_kill_loss: float = 0.01, score_kill_weights: float = 0.83, score_kill_numnodes: float = 0.1, 
+	score_prop_vote: float = 0.23, score_prop_weights: float = 0.005, score_prop_loss: float = 0.78, score_prop_potency: float = 1.0):
 		self.score_kill_weights = score_kill_weights
 		self.score_kill_loss = score_kill_loss
 		self.score_kill_numnodes = score_kill_numnodes
