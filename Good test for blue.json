@@ -1,1 +1,686 @@
-{"0": {"0.5282051282051282": {"score_edu_redweights": -0.6832286166575094, "score_edu_edges": -0.8759920534760253, "score_edu_unc": -0.03691091325730533, "score_con_dist": -0.8983471490521571, "score_con_weight": -0.09910138918982536}, "0.5333333333333333": {"score_edu_redweights": -0.6422911382928416, "score_edu_edges": 0.5565174240119037, "score_edu_unc": 0.43777470557320286, "score_con_dist": -0.8902123599658447, "score_con_weight": -0.4727290433813385}, "0.5515463917525774": {"score_edu_redweights": 0.24289572774073465, "score_edu_edges": 0.8421144862356928, "score_edu_unc": -0.03712777121412758, "score_con_dist": -0.41854698833175785, "score_con_weight": 0.772896012293457}, "0.5555555555555556": {"score_edu_redweights": -0.394909907958082, "score_edu_edges": -0.8564548624418065, "score_edu_unc": -0.17367425088170374, "score_con_dist": 0.6175816966663323, "score_con_weight": -0.6291002356441748}, "0.5794871794871795": {"score_edu_redweights": -0.22052660234552013, "score_edu_edges": 0.16210337184400792, "score_edu_unc": -0.4648295297567593, "score_con_dist": 0.9212648205537062, "score_con_weight": 0.9227885148698982}}, "1": {"0.517948717948718": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -0.31809594153117837, "score_con_dist": 1, "score_con_weight": -1}, "0.5230769230769231": {"score_edu_redweights": 0.3039722754270996, "score_edu_edges": -1, "score_edu_unc": -0.9276289425829777, "score_con_dist": 0.8593724109364158, "score_con_weight": -1}, "0.5284974093264249": {"score_edu_redweights": -1, "score_edu_edges": 0.6808658662404468, "score_edu_unc": -1, "score_con_dist": 0.948570326400002, "score_con_weight": -1}, "0.5435897435897435": {"score_edu_redweights": 1, "score_edu_edges": -1, "score_edu_unc": -1, "score_con_dist": -1, "score_con_weight": -0.20364531891658155}, "0.5487179487179488": {"score_edu_redweights": -0.5293451620697565, "score_edu_edges": 1, "score_edu_unc": -0.23976021162941225, "score_con_dist": 1, "score_con_weight": 1}}, "2": {"0.5103092783505154": {"score_edu_redweights": 0.04539994859319496, "score_edu_edges": 1, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": 1}, "0.5204081632653061": {"score_edu_redweights": -0.6676711118040508, "score_edu_edges": 1, "score_edu_unc": -0.2787031409689342, "score_con_dist": 0.8611324144561077, "score_con_weight": -1}, "0.520618556701031": {"score_edu_redweights": -1, "score_edu_edges": 0.5920855709798769, "score_edu_unc": -0.8283248867226551, "score_con_dist": -0.8652503504901068, "score_con_weight": -0.2247000766174796}, "0.5440414507772021": {"score_edu_redweights": -0.13475785877113644, "score_edu_edges": 0.5728619927831018, "score_edu_unc": -1, "score_con_dist": -1, "score_con_weight": -0.07833411013117841}, "0.5670103092783505": {"score_edu_redweights": -1, "score_edu_edges": 1, "score_edu_unc": -1, "score_con_dist": 0.5206266637570948, "score_con_weight": -1}}, "3": {"0.5306122448979592": {"score_edu_redweights": -0.18438158002498084, "score_edu_edges": -1, "score_edu_unc": -1, "score_con_dist": -0.9222784254991694, "score_con_weight": -0.7796758256507483}, "0.5333333333333333": {"score_edu_redweights": 0.06191139724278073, "score_edu_edges": 0.09474649770622678, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": 0.2969670157637322}, "0.533678756476684": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -1, "score_con_dist": -1, "score_con_weight": -1}, "0.5384615384615384": {"score_edu_redweights": 0.6362257083571927, "score_edu_edges": 0.39117046559445445, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": -1}, "0.5773195876288659": {"score_edu_redweights": 0.07087457520558482, "score_edu_edges": -0.21936440994116824, "score_edu_unc": -1, "score_con_dist": -1, "score_con_weight": -1}}, "4": {"0.5128205128205128": {"score_edu_redweights": -0.029983818790597527, "score_edu_edges": 0.5847969865318063, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": -1}, "0.5153061224489796": {"score_edu_redweights": -0.8814921836295977, "score_edu_edges": -1, "score_edu_unc": 1, "score_con_dist": -1, "score_con_weight": 0.9945148675180433}, "0.576530612244898": {"score_edu_redweights": -1, "score_edu_edges": -1, "score_edu_unc": -0.773760680197825, "score_con_dist": -0.045359877540930404, "score_con_weight": 0.04453930094218905}, "0.5794871794871795": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": -0.019416383368595413}}, "5": {"0.5076923076923077": {"score_edu_redweights": -0.6665341782026213, "score_edu_edges": -1, "score_edu_unc": 1, "score_con_dist": 0.7733416572414666, "score_con_weight": 1}, "0.5282051282051282": {"score_edu_redweights": -1, "score_edu_edges": -1, "score_edu_unc": 1, "score_con_dist": 1, "score_con_weight": 1}, "0.5306122448979592": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": 1, "score_con_dist": -1, "score_con_weight": 0.11853749989760587}, "0.5463917525773195": {"score_edu_redweights": -0.08987670025679528, "score_edu_edges": 1, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": 0.3964732081237115}}, "6": {"0.5282051282051282": {"score_edu_redweights": 1, "score_edu_edges": -1, "score_edu_unc": -0.920921877986637, "score_con_dist": -1, "score_con_weight": 1}, "0.533678756476684": {"score_edu_redweights": -1, "score_edu_edges": 0.5717341959960862, "score_edu_unc": 1, "score_con_dist": 1, "score_con_weight": 1}, "0.5412371134020618": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": 1, "score_con_dist": -0.6473314174322459, "score_con_weight": -1}, "0.5641025641025641": {"score_edu_redweights": -0.9367346505692351, "score_edu_edges": -1, "score_edu_unc": 1, "score_con_dist": 1, "score_con_weight": 1}}, "7": {"0.5279187817258884": {"score_edu_redweights": 1, "score_edu_edges": -1, "score_edu_unc": 1, "score_con_dist": -0.13995138931769668, "score_con_weight": -0.4545674831486908}, "0.5360824742268041": {"score_edu_redweights": 1, "score_edu_edges": -1, "score_edu_unc": 0.1427540162630786, "score_con_dist": -0.020546337067114617, "score_con_weight": 0.34651087812763315}, "0.5435897435897435": {"score_edu_redweights": 1, "score_edu_edges": 0.9100765524227418, "score_edu_unc": 0.4831059427465293, "score_con_dist": -1, "score_con_weight": 1}, "0.5463917525773195": {"score_edu_redweights": -1, "score_edu_edges": -1, "score_edu_unc": 0.3702497047129715, "score_con_dist": 1, "score_con_weight": 0.11751406748691606}}, "8": {"0.517948717948718": {"score_edu_redweights": -0.21325528667803317, "score_edu_edges": -0.6565246433717993, "score_edu_unc": 1, "score_con_dist": 0.06301315826546061, "score_con_weight": -0.8003692167792141}, "0.5228426395939086": {"score_edu_redweights": 1, "score_edu_edges": 0.8403390004800095, "score_edu_unc": -0.3891151602813697, "score_con_dist": 0.76074359099854, "score_con_weight": 0.7023956043193833}, "0.5333333333333333": {"score_edu_redweights": 1, "score_edu_edges": 0.580898023197004, "score_edu_unc": -0.3609531213794337, "score_con_dist": -1, "score_con_weight": -1}, "0.5360824742268041": {"score_edu_redweights": 1, "score_edu_edges": -1, "score_edu_unc": -0.4194759363078222, "score_con_dist": -1, "score_con_weight": 1}, "0.5618556701030928": {"score_edu_redweights": 1, "score_edu_edges": -1, "score_edu_unc": 0.6193565522286232, "score_con_dist": -1, "score_con_weight": -1}}, "9": {"0.5154639175257731": {"score_edu_redweights": -0.20259553666054142, "score_edu_edges": -1, "score_edu_unc": 1, "score_con_dist": 0.5193959809787095, "score_con_weight": -1}, "0.517948717948718": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": 0.8494875581237233, "score_con_dist": -1, "score_con_weight": -1}, "0.5257731958762887": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": 1, "score_con_dist": 1, "score_con_weight": -1}, "0.5309278350515464": {"score_edu_redweights": 1, "score_edu_edges": -0.31254983262009955, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": -1}, "0.5412371134020618": {"score_edu_redweights": 0.4860372712248553, "score_edu_edges": -0.31825205444465593, "score_edu_unc": -1, "score_con_dist": -0.46348366699307675, "score_con_weight": -1}}, "10": {"0.520618556701031": {"score_edu_redweights": 1, "score_edu_edges": -0.5034896452939068, "score_edu_unc": 0.6593970882872764, "score_con_dist": -1, "score_con_weight": -1}, "0.5257731958762887": {"score_edu_redweights": -0.4557776203933892, "score_edu_edges": -1, "score_edu_unc": 0.6890067423287145, "score_con_dist": 0.22532987830089002, "score_con_weight": -1}, "0.5412371134020618": {"score_edu_redweights": 1, "score_edu_edges": -0.8459559452150591, "score_edu_unc": -1, "score_con_dist": -1, "score_con_weight": -1}, "0.5487179487179488": {"score_edu_redweights": 1, "score_edu_edges": 0.2846975472503938, "score_edu_unc": 0.13159629592904198, "score_con_dist": -0.025398816669136126, "score_con_weight": -0.2652674730229494}, "0.5641025641025641": {"score_edu_redweights": 0.9366293236429969, "score_edu_edges": 1, "score_edu_unc": 0.5166888290010181, "score_con_dist": 1, "score_con_weight": 0.09059015476457066}}, "11": {"0.5230769230769231": {"score_edu_redweights": 1, "score_edu_edges": -0.30438052058478593, "score_edu_unc": -0.16489180162049666, "score_con_dist": -0.9538551786018166, "score_con_weight": -1}, "0.5357142857142857": {"score_edu_redweights": 1, "score_edu_edges": 0.08287958275677174, "score_edu_unc": -1, "score_con_dist": 0.809561877956424, "score_con_weight": 1}, "0.5567010309278351": {"score_edu_redweights": 0.7778172173147206, "score_edu_edges": 0.622393582813898, "score_edu_unc": -0.3083005083673944, "score_con_dist": 1, "score_con_weight": -1}, "0.5794871794871795": {"score_edu_redweights": 0.09301623614802157, "score_edu_edges": -0.8899018429008801, "score_edu_unc": 1, "score_con_dist": 1, "score_con_weight": -1}}, "12": {"0.5076923076923077": {"score_edu_redweights": 0.5859773232374383, "score_edu_edges": -1, "score_edu_unc": -0.9097495483626603, "score_con_dist": 1, "score_con_weight": 1}, "0.5128205128205128": {"score_edu_redweights": 1, "score_edu_edges": -0.21579434589263408, "score_edu_unc": -1, "score_con_dist": 0.34447465118299214, "score_con_weight": 0.028950883133223915}, "0.5154639175257731": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -0.6800726442510434, "score_con_dist": 1, "score_con_weight": -0.9414816238783316}, "0.520618556701031": {"score_edu_redweights": 0.6701691406053907, "score_edu_edges": 1, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": -1}, "0.5257731958762887": {"score_edu_redweights": 1, "score_edu_edges": 0.9408207515709941, "score_edu_unc": 0.5312217303066746, "score_con_dist": 0.5678299428280082, "score_con_weight": -1}}, "13": {"0.5076923076923077": {"score_edu_redweights": -0.48926958057864467, "score_edu_edges": -1, "score_edu_unc": -1, "score_con_dist": -0.20060095777579579, "score_con_weight": 1}, "0.5128205128205128": {"score_edu_redweights": 1, "score_edu_edges": 0.8677664839362829, "score_edu_unc": -0.673588017683955, "score_con_dist": 1, "score_con_weight": -0.5075417340181485}, "0.5309278350515464": {"score_edu_redweights": -0.7105843130110179, "score_edu_edges": -0.3312489642239051, "score_edu_unc": -0.7264007894147515, "score_con_dist": 1, "score_con_weight": -1}, "0.5459183673469388": {"score_edu_redweights": 0.3540825473538567, "score_edu_edges": -1, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": 1}}, "14": {"0.5282051282051282": {"score_edu_redweights": -0.36390985639069595, "score_edu_edges": 0.05492699737386064, "score_edu_unc": -0.3259363873959257, "score_con_dist": 0.42201797175063316, "score_con_weight": 1}, "0.5333333333333333": {"score_edu_redweights": -0.10380690747781063, "score_edu_edges": -0.22534099895898574, "score_edu_unc": -0.4357048120787868, "score_con_dist": 0.663046396492811, "score_con_weight": -1}, "0.5384615384615384": {"score_edu_redweights": -0.6745525133154514, "score_edu_edges": -1, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": 0.5172144399136198}, "0.5435897435897435": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -0.06483574553550808, "score_con_dist": 1, "score_con_weight": -0.5250307401230642}}, "15": {"0.5154639175257731": {"score_edu_redweights": -0.48811338441105057, "score_edu_edges": -0.1759504072104432, "score_edu_unc": -0.3439097444915046, "score_con_dist": -0.2581374182476568, "score_con_weight": -0.5734666187163711}, "0.517948717948718": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -0.24387667385202594, "score_con_dist": 1, "score_con_weight": -1}, "0.520618556701031": {"score_edu_redweights": 1, "score_edu_edges": 0.7628684676085622, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": -1}, "0.5333333333333333": {"score_edu_redweights": 0.628196449167156, "score_edu_edges": 0.7232498626785206, "score_edu_unc": 0.1227870306413269, "score_con_dist": 0.42449669648773164, "score_con_weight": 0.5461329803997925}, "0.5699481865284974": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": 0.0703925524875619, "score_con_dist": 1, "score_con_weight": -1}}, "16": {"0.5360824742268041": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -1, "score_con_dist": 1, "score_con_weight": -1}, "0.5487179487179488": {"score_edu_redweights": 0.637671204595324, "score_edu_edges": 1, "score_edu_unc": -0.6172266498078199, "score_con_dist": 0.9166663481170185, "score_con_weight": -0.14469624553739335}, "0.5538461538461539": {"score_edu_redweights": -0.6230659812650129, "score_edu_edges": 1, "score_edu_unc": -0.29201049149369174, "score_con_dist": -0.424573732766411, "score_con_weight": 1}, "0.5612244897959183": {"score_edu_redweights": 1, "score_edu_edges": 0.6701412840054787, "score_edu_unc": -0.5534412863561691, "score_con_dist": 0.3313512392309337, "score_con_weight": 1}}, "17": {"0.5128205128205128": {"score_edu_redweights": 1, "score_edu_edges": 1, "score_edu_unc": -0.024543867101238348, "score_con_dist": 0.5505577772901722, "score_con_weight": 1}, "0.5204081632653061": {"score_edu_redweights": 0.41406988218763674, "score_edu_edges": 0.8046424895591624, "score_edu_unc": -0.31565650877551643, "score_con_dist": 0.08608993762034275, "score_con_weight": 0.5299678276369423}, "0.520618556701031": {"score_edu_redweights": -0.30533062777031644, "score_edu_edges": 0.9288857691319253, "score_edu_unc": -0.39170833483286077, "score_con_dist": -0.32879411315977025, "score_con_weight": 0.6186010585946577}, "0.5230769230769231": {"score_edu_redweights": 0.4326415621378807, "score_edu_edges": 0.6474107373785704, "score_edu_unc": -0.7660368171492211, "score_con_dist": 1, "score_con_weight": -0.7044326856712525}, "0.5257731958762887": {"score_edu_redweights": 1, "score_edu_edges": 0.8334580081370175, "score_edu_unc": -0.6119948698525179, "score_con_dist": 1, "score_con_weight": -0.45550513034902235}}, "18": {"0.5128205128205128": {"score_edu_redweights": 0.2537030919169506, "score_edu_edges": 0.5966234940478674, "score_edu_unc": -0.616585004073062, "score_con_dist": 1, "score_con_weight": -0.9785706343032627}, "0.520618556701031": {"score_edu_redweights": 0.11147010684357705, "score_edu_edges": 0.49827167835900904, "score_edu_unc": -1, "score_con_dist": 0.673217636694948, "score_con_weight": -1}, "0.5230769230769231": {"score_edu_redweights": 1, "score_edu_edges": 0.8526660346479022, "score_edu_unc": -0.9702440966116608, "score_con_dist": 1, "score_con_weight": 0.16851650917526545}, "0.5309278350515464": {"score_edu_redweights": 0.007417947324570129, "score_edu_edges": 1, "score_edu_unc": 0.11852029225359512, "score_con_dist": 0.4013918282521374, "score_con_weight": 0.5211548808068878}, "0.5360824742268041": {"score_edu_redweights": 0.6621804848349495, "score_edu_edges": -0.07023727287385473, "score_edu_unc": -1, "score_con_dist": 0.939439224642936, "score_con_weight": -1}}, "19": {"0.5": {"score_edu_redweights": 0.12300873729459269, "score_edu_edges": 0.3478588196549436, "score_edu_unc": -0.6332629071574657, "score_con_dist": 0.9725575632772696, "score_con_weight": -0.8439523537776431}, "0.5103092783505154": {"score_edu_redweights": 0.5529600560715642, "score_edu_edges": 0.019280623210916947, "score_edu_unc": -0.6489502304339297, "score_con_dist": 0.7751308586687807, "score_con_weight": -1}, "0.5128205128205128": {"score_edu_redweights": -0.02755447355256546, "score_edu_edges": 1, "score_edu_unc": 0.1908115880625164, "score_con_dist": 0.6552670936631239, "score_con_weight": 0.7636162676641548}, "0.517948717948718": {"score_edu_redweights": 0.7402591758631563, "score_edu_edges": 0.0036023913005292507, "score_edu_unc": -1, "score_con_dist": 0.5136715571172403, "score_con_weight": -1}, "0.5228426395939086": {"score_edu_redweights": 0.1050012301892918, "score_edu_edges": 0.550003112592679, "score_edu_unc": -1, "score_con_dist": 0.839000630466785, "score_con_weight": -1}}}
+{
+	"0": {
+		"0.5282051282051282": {
+			"score_edu_redweights": -0.6832286166575094,
+			"score_edu_edges": -0.8759920534760253,
+			"score_edu_unc": -0.03691091325730533,
+			"score_con_dist": -0.8983471490521571,
+			"score_con_weight": -0.09910138918982536
+		},
+		"0.5333333333333333": {
+			"score_edu_redweights": -0.6422911382928416,
+			"score_edu_edges": 0.5565174240119037,
+			"score_edu_unc": 0.43777470557320286,
+			"score_con_dist": -0.8902123599658447,
+			"score_con_weight": -0.4727290433813385
+		},
+		"0.5515463917525774": {
+			"score_edu_redweights": 0.24289572774073465,
+			"score_edu_edges": 0.8421144862356928,
+			"score_edu_unc": -0.03712777121412758,
+			"score_con_dist": -0.41854698833175785,
+			"score_con_weight": 0.772896012293457
+		},
+		"0.5555555555555556": {
+			"score_edu_redweights": -0.394909907958082,
+			"score_edu_edges": -0.8564548624418065,
+			"score_edu_unc": -0.17367425088170374,
+			"score_con_dist": 0.6175816966663323,
+			"score_con_weight": -0.6291002356441748
+		},
+		"0.5794871794871795": {
+			"score_edu_redweights": -0.22052660234552013,
+			"score_edu_edges": 0.16210337184400792,
+			"score_edu_unc": -0.4648295297567593,
+			"score_con_dist": 0.9212648205537062,
+			"score_con_weight": 0.9227885148698982
+		}
+	},
+	"1": {
+		"0.517948717948718": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.31809594153117837,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5230769230769231": {
+			"score_edu_redweights": 0.3039722754270996,
+			"score_edu_edges": -1,
+			"score_edu_unc": -0.9276289425829777,
+			"score_con_dist": 0.8593724109364158,
+			"score_con_weight": -1
+		},
+		"0.5284974093264249": {
+			"score_edu_redweights": -1,
+			"score_edu_edges": 0.6808658662404468,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.948570326400002,
+			"score_con_weight": -1
+		},
+		"0.5435897435897435": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -1,
+			"score_edu_unc": -1,
+			"score_con_dist": -1,
+			"score_con_weight": -0.20364531891658155
+		},
+		"0.5487179487179488": {
+			"score_edu_redweights": -0.5293451620697565,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.23976021162941225,
+			"score_con_dist": 1,
+			"score_con_weight": 1
+		}
+	},
+	"2": {
+		"0.5103092783505154": {
+			"score_edu_redweights": 0.04539994859319496,
+			"score_edu_edges": 1,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": 1
+		},
+		"0.5204081632653061": {
+			"score_edu_redweights": -0.6676711118040508,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.2787031409689342,
+			"score_con_dist": 0.8611324144561077,
+			"score_con_weight": -1
+		},
+		"0.520618556701031": {
+			"score_edu_redweights": -1,
+			"score_edu_edges": 0.5920855709798769,
+			"score_edu_unc": -0.8283248867226551,
+			"score_con_dist": -0.8652503504901068,
+			"score_con_weight": -0.2247000766174796
+		},
+		"0.5440414507772021": {
+			"score_edu_redweights": -0.13475785877113644,
+			"score_edu_edges": 0.5728619927831018,
+			"score_edu_unc": -1,
+			"score_con_dist": -1,
+			"score_con_weight": -0.07833411013117841
+		},
+		"0.5670103092783505": {
+			"score_edu_redweights": -1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.5206266637570948,
+			"score_con_weight": -1
+		}
+	},
+	"3": {
+		"0.5306122448979592": {
+			"score_edu_redweights": -0.18438158002498084,
+			"score_edu_edges": -1,
+			"score_edu_unc": -1,
+			"score_con_dist": -0.9222784254991694,
+			"score_con_weight": -0.7796758256507483
+		},
+		"0.5333333333333333": {
+			"score_edu_redweights": 0.06191139724278073,
+			"score_edu_edges": 0.09474649770622678,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": 0.2969670157637322
+		},
+		"0.533678756476684": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -1,
+			"score_con_dist": -1,
+			"score_con_weight": -1
+		},
+		"0.5384615384615384": {
+			"score_edu_redweights": 0.6362257083571927,
+			"score_edu_edges": 0.39117046559445445,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5773195876288659": {
+			"score_edu_redweights": 0.07087457520558482,
+			"score_edu_edges": -0.21936440994116824,
+			"score_edu_unc": -1,
+			"score_con_dist": -1,
+			"score_con_weight": -1
+		}
+	},
+	"4": {
+		"0.5128205128205128": {
+			"score_edu_redweights": -0.029983818790597527,
+			"score_edu_edges": 0.5847969865318063,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5153061224489796": {
+			"score_edu_redweights": -0.8814921836295977,
+			"score_edu_edges": -1,
+			"score_edu_unc": 1,
+			"score_con_dist": -1,
+			"score_con_weight": 0.9945148675180433
+		},
+		"0.576530612244898": {
+			"score_edu_redweights": -1,
+			"score_edu_edges": -1,
+			"score_edu_unc": -0.773760680197825,
+			"score_con_dist": -0.045359877540930404,
+			"score_con_weight": 0.04453930094218905
+		},
+		"0.5794871794871795": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": -0.019416383368595413
+		}
+	},
+	"5": {
+		"0.5076923076923077": {
+			"score_edu_redweights": -0.6665341782026213,
+			"score_edu_edges": -1,
+			"score_edu_unc": 1,
+			"score_con_dist": 0.7733416572414666,
+			"score_con_weight": 1
+		},
+		"0.5282051282051282": {
+			"score_edu_redweights": -1,
+			"score_edu_edges": -1,
+			"score_edu_unc": 1,
+			"score_con_dist": 1,
+			"score_con_weight": 1
+		},
+		"0.5306122448979592": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": 1,
+			"score_con_dist": -1,
+			"score_con_weight": 0.11853749989760587
+		},
+		"0.5463917525773195": {
+			"score_edu_redweights": -0.08987670025679528,
+			"score_edu_edges": 1,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": 0.3964732081237115
+		}
+	},
+	"6": {
+		"0.5282051282051282": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -1,
+			"score_edu_unc": -0.920921877986637,
+			"score_con_dist": -1,
+			"score_con_weight": 1
+		},
+		"0.533678756476684": {
+			"score_edu_redweights": -1,
+			"score_edu_edges": 0.5717341959960862,
+			"score_edu_unc": 1,
+			"score_con_dist": 1,
+			"score_con_weight": 1
+		},
+		"0.5412371134020618": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": 1,
+			"score_con_dist": -0.6473314174322459,
+			"score_con_weight": -1
+		},
+		"0.5641025641025641": {
+			"score_edu_redweights": -0.9367346505692351,
+			"score_edu_edges": -1,
+			"score_edu_unc": 1,
+			"score_con_dist": 1,
+			"score_con_weight": 1
+		}
+	},
+	"7": {
+		"0.5279187817258884": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -1,
+			"score_edu_unc": 1,
+			"score_con_dist": -0.13995138931769668,
+			"score_con_weight": -0.4545674831486908
+		},
+		"0.5360824742268041": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -1,
+			"score_edu_unc": 0.1427540162630786,
+			"score_con_dist": -0.020546337067114617,
+			"score_con_weight": 0.34651087812763315
+		},
+		"0.5435897435897435": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.9100765524227418,
+			"score_edu_unc": 0.4831059427465293,
+			"score_con_dist": -1,
+			"score_con_weight": 1
+		},
+		"0.5463917525773195": {
+			"score_edu_redweights": -1,
+			"score_edu_edges": -1,
+			"score_edu_unc": 0.3702497047129715,
+			"score_con_dist": 1,
+			"score_con_weight": 0.11751406748691606
+		}
+	},
+	"8": {
+		"0.517948717948718": {
+			"score_edu_redweights": -0.21325528667803317,
+			"score_edu_edges": -0.6565246433717993,
+			"score_edu_unc": 1,
+			"score_con_dist": 0.06301315826546061,
+			"score_con_weight": -0.8003692167792141
+		},
+		"0.5228426395939086": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.8403390004800095,
+			"score_edu_unc": -0.3891151602813697,
+			"score_con_dist": 0.76074359099854,
+			"score_con_weight": 0.7023956043193833
+		},
+		"0.5333333333333333": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.580898023197004,
+			"score_edu_unc": -0.3609531213794337,
+			"score_con_dist": -1,
+			"score_con_weight": -1
+		},
+		"0.5360824742268041": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -1,
+			"score_edu_unc": -0.4194759363078222,
+			"score_con_dist": -1,
+			"score_con_weight": 1
+		},
+		"0.5618556701030928": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -1,
+			"score_edu_unc": 0.6193565522286232,
+			"score_con_dist": -1,
+			"score_con_weight": -1
+		}
+	},
+	"9": {
+		"0.5154639175257731": {
+			"score_edu_redweights": -0.20259553666054142,
+			"score_edu_edges": -1,
+			"score_edu_unc": 1,
+			"score_con_dist": 0.5193959809787095,
+			"score_con_weight": -1
+		},
+		"0.517948717948718": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": 0.8494875581237233,
+			"score_con_dist": -1,
+			"score_con_weight": -1
+		},
+		"0.5257731958762887": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": 1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5309278350515464": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -0.31254983262009955,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5412371134020618": {
+			"score_edu_redweights": 0.4860372712248553,
+			"score_edu_edges": -0.31825205444465593,
+			"score_edu_unc": -1,
+			"score_con_dist": -0.46348366699307675,
+			"score_con_weight": -1
+		}
+	},
+	"10": {
+		"0.520618556701031": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -0.5034896452939068,
+			"score_edu_unc": 0.6593970882872764,
+			"score_con_dist": -1,
+			"score_con_weight": -1
+		},
+		"0.5257731958762887": {
+			"score_edu_redweights": -0.4557776203933892,
+			"score_edu_edges": -1,
+			"score_edu_unc": 0.6890067423287145,
+			"score_con_dist": 0.22532987830089002,
+			"score_con_weight": -1
+		},
+		"0.5412371134020618": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -0.8459559452150591,
+			"score_edu_unc": -1,
+			"score_con_dist": -1,
+			"score_con_weight": -1
+		},
+		"0.5487179487179488": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.2846975472503938,
+			"score_edu_unc": 0.13159629592904198,
+			"score_con_dist": -0.025398816669136126,
+			"score_con_weight": -0.2652674730229494
+		},
+		"0.5641025641025641": {
+			"score_edu_redweights": 0.9366293236429969,
+			"score_edu_edges": 1,
+			"score_edu_unc": 0.5166888290010181,
+			"score_con_dist": 1,
+			"score_con_weight": 0.09059015476457066
+		}
+	},
+	"11": {
+		"0.5230769230769231": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -0.30438052058478593,
+			"score_edu_unc": -0.16489180162049666,
+			"score_con_dist": -0.9538551786018166,
+			"score_con_weight": -1
+		},
+		"0.5357142857142857": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.08287958275677174,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.809561877956424,
+			"score_con_weight": 1
+		},
+		"0.5567010309278351": {
+			"score_edu_redweights": 0.7778172173147206,
+			"score_edu_edges": 0.622393582813898,
+			"score_edu_unc": -0.3083005083673944,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5794871794871795": {
+			"score_edu_redweights": 0.09301623614802157,
+			"score_edu_edges": -0.8899018429008801,
+			"score_edu_unc": 1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		}
+	},
+	"12": {
+		"0.5076923076923077": {
+			"score_edu_redweights": 0.5859773232374383,
+			"score_edu_edges": -1,
+			"score_edu_unc": -0.9097495483626603,
+			"score_con_dist": 1,
+			"score_con_weight": 1
+		},
+		"0.5128205128205128": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": -0.21579434589263408,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.34447465118299214,
+			"score_con_weight": 0.028950883133223915
+		},
+		"0.5154639175257731": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.6800726442510434,
+			"score_con_dist": 1,
+			"score_con_weight": -0.9414816238783316
+		},
+		"0.520618556701031": {
+			"score_edu_redweights": 0.6701691406053907,
+			"score_edu_edges": 1,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5257731958762887": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.9408207515709941,
+			"score_edu_unc": 0.5312217303066746,
+			"score_con_dist": 0.5678299428280082,
+			"score_con_weight": -1
+		}
+	},
+	"13": {
+		"0.5076923076923077": {
+			"score_edu_redweights": -0.48926958057864467,
+			"score_edu_edges": -1,
+			"score_edu_unc": -1,
+			"score_con_dist": -0.20060095777579579,
+			"score_con_weight": 1
+		},
+		"0.5128205128205128": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.8677664839362829,
+			"score_edu_unc": -0.673588017683955,
+			"score_con_dist": 1,
+			"score_con_weight": -0.5075417340181485
+		},
+		"0.5309278350515464": {
+			"score_edu_redweights": -0.7105843130110179,
+			"score_edu_edges": -0.3312489642239051,
+			"score_edu_unc": -0.7264007894147515,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5459183673469388": {
+			"score_edu_redweights": 0.3540825473538567,
+			"score_edu_edges": -1,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": 1
+		}
+	},
+	"14": {
+		"0.5282051282051282": {
+			"score_edu_redweights": -0.36390985639069595,
+			"score_edu_edges": 0.05492699737386064,
+			"score_edu_unc": -0.3259363873959257,
+			"score_con_dist": 0.42201797175063316,
+			"score_con_weight": 1
+		},
+		"0.5333333333333333": {
+			"score_edu_redweights": -0.10380690747781063,
+			"score_edu_edges": -0.22534099895898574,
+			"score_edu_unc": -0.4357048120787868,
+			"score_con_dist": 0.663046396492811,
+			"score_con_weight": -1
+		},
+		"0.5384615384615384": {
+			"score_edu_redweights": -0.6745525133154514,
+			"score_edu_edges": -1,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": 0.5172144399136198
+		},
+		"0.5435897435897435": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.06483574553550808,
+			"score_con_dist": 1,
+			"score_con_weight": -0.5250307401230642
+		}
+	},
+	"15": {
+		"0.5154639175257731": {
+			"score_edu_redweights": -0.48811338441105057,
+			"score_edu_edges": -0.1759504072104432,
+			"score_edu_unc": -0.3439097444915046,
+			"score_con_dist": -0.2581374182476568,
+			"score_con_weight": -0.5734666187163711
+		},
+		"0.517948717948718": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.24387667385202594,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.520618556701031": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.7628684676085622,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5333333333333333": {
+			"score_edu_redweights": 0.628196449167156,
+			"score_edu_edges": 0.7232498626785206,
+			"score_edu_unc": 0.1227870306413269,
+			"score_con_dist": 0.42449669648773164,
+			"score_con_weight": 0.5461329803997925
+		},
+		"0.5699481865284974": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": 0.0703925524875619,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		}
+	},
+	"16": {
+		"0.5360824742268041": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -1,
+			"score_con_dist": 1,
+			"score_con_weight": -1
+		},
+		"0.5487179487179488": {
+			"score_edu_redweights": 0.637671204595324,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.6172266498078199,
+			"score_con_dist": 0.9166663481170185,
+			"score_con_weight": -0.14469624553739335
+		},
+		"0.5538461538461539": {
+			"score_edu_redweights": -0.6230659812650129,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.29201049149369174,
+			"score_con_dist": -0.424573732766411,
+			"score_con_weight": 1
+		},
+		"0.5612244897959183": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.6701412840054787,
+			"score_edu_unc": -0.5534412863561691,
+			"score_con_dist": 0.3313512392309337,
+			"score_con_weight": 1
+		}
+	},
+	"17": {
+		"0.5128205128205128": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 1,
+			"score_edu_unc": -0.024543867101238348,
+			"score_con_dist": 0.5505577772901722,
+			"score_con_weight": 1
+		},
+		"0.5204081632653061": {
+			"score_edu_redweights": 0.41406988218763674,
+			"score_edu_edges": 0.8046424895591624,
+			"score_edu_unc": -0.31565650877551643,
+			"score_con_dist": 0.08608993762034275,
+			"score_con_weight": 0.5299678276369423
+		},
+		"0.520618556701031": {
+			"score_edu_redweights": -0.30533062777031644,
+			"score_edu_edges": 0.9288857691319253,
+			"score_edu_unc": -0.39170833483286077,
+			"score_con_dist": -0.32879411315977025,
+			"score_con_weight": 0.6186010585946577
+		},
+		"0.5230769230769231": {
+			"score_edu_redweights": 0.4326415621378807,
+			"score_edu_edges": 0.6474107373785704,
+			"score_edu_unc": -0.7660368171492211,
+			"score_con_dist": 1,
+			"score_con_weight": -0.7044326856712525
+		},
+		"0.5257731958762887": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.8334580081370175,
+			"score_edu_unc": -0.6119948698525179,
+			"score_con_dist": 1,
+			"score_con_weight": -0.45550513034902235
+		}
+	},
+	"18": {
+		"0.5128205128205128": {
+			"score_edu_redweights": 0.2537030919169506,
+			"score_edu_edges": 0.5966234940478674,
+			"score_edu_unc": -0.616585004073062,
+			"score_con_dist": 1,
+			"score_con_weight": -0.9785706343032627
+		},
+		"0.520618556701031": {
+			"score_edu_redweights": 0.11147010684357705,
+			"score_edu_edges": 0.49827167835900904,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.673217636694948,
+			"score_con_weight": -1
+		},
+		"0.5230769230769231": {
+			"score_edu_redweights": 1,
+			"score_edu_edges": 0.8526660346479022,
+			"score_edu_unc": -0.9702440966116608,
+			"score_con_dist": 1,
+			"score_con_weight": 0.16851650917526545
+		},
+		"0.5309278350515464": {
+			"score_edu_redweights": 0.007417947324570129,
+			"score_edu_edges": 1,
+			"score_edu_unc": 0.11852029225359512,
+			"score_con_dist": 0.4013918282521374,
+			"score_con_weight": 0.5211548808068878
+		},
+		"0.5360824742268041": {
+			"score_edu_redweights": 0.6621804848349495,
+			"score_edu_edges": -0.07023727287385473,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.939439224642936,
+			"score_con_weight": -1
+		}
+	},
+	"19": {
+		"0.5": {
+			"score_edu_redweights": 0.12300873729459269,
+			"score_edu_edges": 0.3478588196549436,
+			"score_edu_unc": -0.6332629071574657,
+			"score_con_dist": 0.9725575632772696,
+			"score_con_weight": -0.8439523537776431
+		},
+		"0.5103092783505154": {
+			"score_edu_redweights": 0.5529600560715642,
+			"score_edu_edges": 0.019280623210916947,
+			"score_edu_unc": -0.6489502304339297,
+			"score_con_dist": 0.7751308586687807,
+			"score_con_weight": -1
+		},
+		"0.5128205128205128": {
+			"score_edu_redweights": -0.02755447355256546,
+			"score_edu_edges": 1,
+			"score_edu_unc": 0.1908115880625164,
+			"score_con_dist": 0.6552670936631239,
+			"score_con_weight": 0.7636162676641548
+		},
+		"0.517948717948718": {
+			"score_edu_redweights": 0.7402591758631563,
+			"score_edu_edges": 0.0036023913005292507,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.5136715571172403,
+			"score_con_weight": -1
+		},
+		"0.5228426395939086": {
+			"score_edu_redweights": 0.1050012301892918,
+			"score_edu_edges": 0.550003112592679,
+			"score_edu_unc": -1,
+			"score_con_dist": 0.839000630466785,
+			"score_con_weight": -1
+		}
+	}
+}
