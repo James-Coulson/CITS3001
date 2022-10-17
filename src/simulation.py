@@ -26,7 +26,7 @@ from .utility import clamp
 # ----- Simulation Methods ----- #
 
 def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent: Agent = SmartRedAgent(), max_time: int = 100, uncertainty_int: list = [-0.5, 0.5], plot_frequency: int = None, 
-				   colortype = MAP_TEAMS, print_summary: bool = False, plot_statistics: bool = False, verbose: bool = False):
+				   colortype = MAP_TEAMS, print_summary: bool = False, plot_labels: bool = False, plot_statistics: bool = False, verbose: bool = False):
 	"""
 	Runs the simulation on a given graph
 
@@ -198,7 +198,7 @@ def run_simulation(G: nx.Graph, blue_agent: Agent = SmartBlueAgent(), red_agent:
 
 		# Call plot_graph
 		if plot_frequency is not None and t % plot_frequency == 0:
-			plot_graph(G, uncertainty_int, pos=pos, block=False, colortype = colortype)
+			plot_graph(G, uncertainty_int, pos=pos, block=False, colortype = colortype, plot_labels=plot_labels)
 
 		# ---------------- Time Per Turn ---------------- #
 

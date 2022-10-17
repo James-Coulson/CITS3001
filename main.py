@@ -1,6 +1,7 @@
 # ----- Imports ----- #
 
 # Local imports
+from turtle import color
 from src.agents.blue_agents import SmartBlueAgent, RandomBlueAgent, UserBlueAgent
 from src.agents.red_agents import SmartRedAgent, RandomRedAgent, UserRedAgent
 from src.constants import *
@@ -24,11 +25,17 @@ new_edges = 4
 # Defining uncertainty interval
 uncertainty_int = [-1, 1]
 
+# Setting the colortype
+colortype = MAP_WILLVOTE
+
+# Whether labels for uncertainty and willvote are shown
+plot_labels = True
+
 # Generate graph
 G = generate_graph(num_green, prob = prob, new_edges = new_edges, uncertainty_int = uncertainty_int, type_ = type_)
 
 # Plot initial graph
-plot_graph(G, uncertainty_int, colortype = MAP_WILLVOTE)
+plot_graph(G, uncertainty_int, colortype = colortype, plot_labels=plot_labels)
 
 # Runs simulation
 # run_simulation(G, max_time = 300, verbose=True, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=RandomRedAgent(), blue_agent=SmartBlueAgent())
@@ -83,9 +90,8 @@ red.initialize(**{
 			"score_prop_potency": 1
 		})
 
-run_simulation(G, max_time = 300, verbose=True, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_statistics=True, red_agent=red, blue_agent=blue)
-
+run_simulation(G, max_time = 300, verbose=True, plot_frequency = 1, uncertainty_int = uncertainty_int, colortype = MAP_WILLVOTE, print_summary=False, plot_labels=plot_labels, plot_statistics=True, red_agent=red, blue_agent=blue)
 
 
 # Plot final graph
-plot_graph(G, uncertainty_int, colortype=MAP_WILLVOTE)
+plot_graph(G, uncertainty_int, colortype=colortype, plot_labels=plot_labels)
