@@ -147,8 +147,12 @@ class SmartBlueAgent(Agent):
 			# Scoring Propaganda move
 			if con_nodes[0] is None or con_nodes[1] is None:
 				return 'educate'
-			moves_scores['connect'] += nx.shortest_path_length(G, con_nodes[0], con_nodes[1]) * self.score_con_dist
-			moves_scores['connect'] += G.degree(con_nodes[1], 'weight') * self.score_con_weight
+
+			try:
+				moves_scores['connect'] += nx.shortest_path_length(G, con_nodes[0], con_nodes[1]) * self.score_con_dist
+				moves_scores['connect'] += G.degree(con_nodes[1], 'weight') * self.score_con_weight
+			except:
+				return 'educate'
 
 			return max(moves_scores, key=moves_scores.get)
 
@@ -185,7 +189,7 @@ class SmartBlueAgent(Agent):
 		for i in best_weights:
 			edu_nodes.append(i[1])
 
-		if self.energy > 0.1:
+		if self.energy > 0.2:
 			move = score(G, ['connect', 'educate'], weights, oppweights, willvotes, uncertainties, con_nodes, edu_nodes)
 			
 			if move == 'connect':
@@ -197,7 +201,7 @@ class SmartBlueAgent(Agent):
 				# Returning move
 				return {'move': move, 'nodes': edu_nodes}
 
-		return {'move': None}
+		return {'move': 'gray'}
 
 	def get_summary(self) -> dict:
 		return "Not a whole lot going on in here ........ cause it's random"
