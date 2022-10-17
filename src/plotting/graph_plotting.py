@@ -16,7 +16,7 @@ from ..constants import *
 
 # ----- Graph PLotting Methods ----- #
 
-def plot_graph(G: nx.Graph, uncertainty_int: list, layout_function: Callable = nx.spring_layout, block: bool = True, pos = None, colortype: int = MAP_TEAMS):
+def plot_graph(G: nx.Graph, uncertainty_int: list, layout_function: Callable = nx.spring_layout, block: bool = True, pos = None, colortype: int = MAP_TEAMS, plot_labels: bool = False):
 	"""
 	Function used to render a graph
 
@@ -59,6 +59,18 @@ def plot_graph(G: nx.Graph, uncertainty_int: list, layout_function: Callable = n
 
 	weights = nx.get_edge_attributes(G, 'weight')
 	nx.draw_networkx_edges(G, pos, edgelist = weights.keys(), width = list(weights.values()))
+
+	uncertainties = nx.get_node_attributes(G, "uncertainty")
+	willvotes = nx.get_node_attributes(G, "willvote")
+
+	if plot_labels:
+		labels = dict()
+		for node in G.nodes:
+			if colortype == MAP_WILLVOTE:
+				labels[node] = f"{uncertainties[node]: .2f}"
+			else:
+				labels[node] = f"{uncertainties[node]: .2f}\n{willvotes[node]}"
+		nx.draw_networkx_labels(G, pos, labels=labels)
 
 	# Blocking
 	if block: 
